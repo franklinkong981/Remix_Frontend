@@ -1,8 +1,8 @@
 import axios from "axios";
 
 
-const BASE_URL = "http://localhost:3001";
-//const BASE_URL = import.meta.env.VITE_APP_BASE_URL || "http://localhost:3001";
+//const BASE_URL = "http://localhost:3001";
+const BASE_URL = import.meta.env.VITE_APP_BASE_URL || "http://localhost:3001";
 
 /** This is the top-level API class for the Remix backend that the frontend will interact with for operations such as
  *  registering a new user/authenticating a user, fetching a user's recipes, remixes, and/or reviews, as well as
