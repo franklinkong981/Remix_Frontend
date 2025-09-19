@@ -31,7 +31,7 @@ class RemixApi {
     //This is one way to pass an authorization token: As part of the header.
     const url = `${BASE_URL}/${endpoint}`;
     console.log("URL for API call: ", url);
-    const headers = (RemixApi.token) ? {authorization: `${JoblyApi.token}`} : {};
+    const headers = (RemixApi.token) ? {authorization: `${RemixApi.token}`} : {};
     const params = (method === "get") ? data : {};
 
     try {

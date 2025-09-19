@@ -16,7 +16,7 @@ import "./RemixNavbar.css";
  * 
  * Both logged in and logged out navbars will have the Remix logo displayed on the left which redirects to the homepage.
  */
-function JoblyNavbar({logOutFunc}) {
+function RemixNavbar({logOutFunc}) {
   const {currentUserInfo} = useContext(CurrentUserContext);
 
   function loggedInNavbar() {

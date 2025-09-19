@@ -14,7 +14,7 @@ import Alert from "../reusables/Alert.jsx";
  * - If successful, the new user account is successfully created in the database. 
  *   The user is then redirected to the login page to log in with their new account username and password they just created.
  */
-function SignupForm({signUpFunc}) {
+function SignUpForm({signUpFunc}) {
   const navigate = useNavigate();
 
   const [signUpFormData, setSignUpFormData] = useState({
@@ -105,4 +105,4 @@ function SignupForm({signUpFunc}) {
   );
 }
 
-export default SignupForm;
+export default SignUpForm;

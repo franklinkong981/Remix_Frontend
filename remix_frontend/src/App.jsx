@@ -36,7 +36,7 @@ function App() {
       if (userToken) {
         try {
           //put token in RemixApi class so we can use it to make API calls to the backend.
-          JoblyApi.token = userToken;
+          RemixApi.token = userToken;
           let currentUserPayload= jwtDecode(userToken);
           let currentUser = await RemixApi.getCurrentLoggedInUser(currentUserPayload.username);
           setCurrentUserInfo(currentUser);

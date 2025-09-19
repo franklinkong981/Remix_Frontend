@@ -5,7 +5,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 
 import Homepage from "../home/Homepage.jsx";
 import LoginForm from "../auth/LoginForm.jsx";
-import SignupForm from "../auth/SignupForm.jsx";
+import SignUpForm from "../auth/SignUpForm.jsx";
 
 /**
  * The component for site-wide routes rendered by the App component.
@@ -20,7 +20,7 @@ function RemixRoutes({signUpFunc, loginFunc}) {
     <div className="Routes pt-5">
       <Routes>
         <Route exact path="/login" element={<LoginForm loginFunc={loginFunc} />} />
-        <Route path="/signup" element={<SignupForm signUpFunc={signUpFunc} />} />
+        <Route path="/signup" element={<SignUpForm signUpFunc={signUpFunc} />} />
 
         <Route exact path="/" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/"/>}/>
