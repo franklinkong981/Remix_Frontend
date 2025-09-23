@@ -22,6 +22,10 @@ function RemixRoutes({signUpFunc, loginFunc}) {
         <Route exact path="/login" element={<LoginForm loginFunc={loginFunc} />} />
         <Route path="/signup" element={<SignUpForm signUpFunc={signUpFunc} />} />
 
+        <Route path="/profile" element={<ProtectedRoute> 
+          <UpdateProfileForm /> 
+        </ProtectedRoute>} />
+
         <Route exact path="/" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>

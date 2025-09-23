@@ -22,6 +22,11 @@ function RemixNavbar({logOutFunc}) {
   function loggedInNavbar() {
     return (
       <ul className="navbar-nav ml-auto">
+        <li className="nav-item mr-4">
+          <NavLink className="nav-link" to="/profile">
+            Hello, {currentUserInfo.username}
+          </NavLink>
+        </li>
         <li className="nav-item">
           <Link className="nav-link logout-link" to="/" onClick={logOutFunc}>
             Log out
