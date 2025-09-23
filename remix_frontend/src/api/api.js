@@ -67,6 +67,12 @@ class RemixApi {
     return res.userDetails;
   }
 
+  /** Updates logged in user's information in the database. Can update username and email. Returns updated username and email. */
+  static async updateUserProfile(username, updateProfileFormValues) {
+    let res = await this.request(`users/${username}`, updateProfileFormValues, "patch");
+    return res.updatedUser;
+  }
+
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.
