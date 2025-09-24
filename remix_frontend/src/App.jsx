@@ -19,8 +19,8 @@ export const TOKEN_STORAGE_ID = "remix-token";
 /** 
  * userInfoLoaded: Has currently logged in user's data been returned from API? If not, display loading text on screen.
  * currentUserInfo: Object containing user information from API, this is used to determine if someone is logged in.
- * token: JWT for logged in users, most API calls will require this in the headers. 
- * token is initially read from localStorage when the page is first loaded/refreshed, if not there it will be set to null.
+ * userToken: JWT for logged in users, most API calls will require this in the headers. 
+ * userToken is initially read from localStorage when the page is first loaded/refreshed, if not there it will be set to null.
  * 
  * App contains the Routes component.
 */
@@ -60,8 +60,7 @@ function App() {
   const signUpNewUser = async (signUpFormValues) => {
     try {
       console.log(signUpFormValues);
-      let signUpToken = await RemixApi.signUp(signUpFormValues);
-      setUserToken(userToken => signUpToken);
+      let successMessage = await RemixApi.signUp(signUpFormValues);
       return {signUpSuccessful: true};
     } catch(errors) {
       console.error("User signup failed: ", errors);
@@ -103,7 +102,7 @@ function App() {
   )
 
   return (
-    <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo}}>
+    <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo, userToken, setUserToken}}>
       <div className="App">
         <RemixNavbar logOutFunc={logoutUser} />
         <RemixRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} />

@@ -12,7 +12,7 @@ import CurrentUserContext from "../../contexts/currentUserContext.jsx";
  * Top-level component of /profile route.
  * 
  * Handles changes to local form state on the frontend. Submitting form calls RemixApi to save
- * updated user information on the backend and also the frontend through currentUserInfo in CurrentUserContext,
+ * updated user information on the backend and also the frontend through currentUserInfo state object in CurrentUserContext,
  * which triggers reloading throughout the site to updated user information.
  * 
  * Alert messages will be displayed if user inputs don't match expected criteria, confirmation of a successful save is a simple Alert component.
@@ -22,7 +22,7 @@ function UpdateProfileForm() {
 
   const [profileFormData, setProfileFormData] = useState({
     username: currentUserInfo.username,
-    email: currentUserInfo.firstName
+    email: currentUserInfo.email
   });
   const [profileFormErrors, setProfileFormErrors] = useState([]);
 
@@ -51,6 +51,8 @@ function UpdateProfileForm() {
     };
 
     let username = currentUserInfo.username;
+    console.log(`The username is ${username}`);
+    console.log(currentUserInfo);
     let updatedUserInfo;
 
     try {
@@ -64,22 +66,37 @@ function UpdateProfileForm() {
     setProfileFormErrors([]);
     setUpdateProfileSuccessful(true);
 
-    // triggers current user info throughout the site.
-    setCurrentUserInfo(updatedUserInfo);
+    // triggers current user info throughout the site. Updates the username and email in currentUserInfo object.
+    setCurrentUserInfo(currentUserInfo => ({
+      ...currentUserInfo,
+      username: updatedUserInfo.updatedUser.username,
+      email: updatedUserInfo.updatedUser.email
+    }));
+
+    setUserToken(userToken => updatedUserInfo.updatedToken);
+    
+    console.log(currentUserInfo);
   }
 
   return (
     <div className="UpdateProfileForm col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-      <h2 className="UpdateProfileForm-title">Edit Profile Information.</h2>
+      <h2 className="UpdateProfileForm-title">Your current profile information is displayed below.</h2>
+      <h4 className="UpdateProfileForm-instructions">If you would like to edit this information, fill in the new username/email and submit the form.</h4>
       <div className="card">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="UpdateProfileForm-username-field">Username:</label>
-              <p id="UpdateProfileForm-username-field" className="form-control-plaintext">{profileFormData.username}</p>
+              <label htmlFor="UpdateProfileForm-username-field">New Username (must be 5-30 characters): </label>
+              <input id="UpdateProfileForm-username-field"
+                className="form-control"
+                type="text"
+                name="username"
+                value={profileFormData.username}
+                onChange={handleChange}
+              />
             </div>
             <div className="form-group">
-              <label htmlFor="UpdateProfileForm-email-field">Email:</label>
+              <label htmlFor="UpdateProfileForm-email-field">New Email (must be a valid email):</label>
               <input id="UpdateProfileForm-email-field"
                 className="form-control"
                 type="email"

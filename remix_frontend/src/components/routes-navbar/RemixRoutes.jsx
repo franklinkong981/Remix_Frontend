@@ -6,6 +6,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import Homepage from "../home/Homepage.jsx";
 import LoginForm from "../auth/LoginForm.jsx";
 import SignUpForm from "../auth/SignUpForm.jsx";
+import UpdateProfileForm from "../profile/UpdateProfileForm.jsx";
 
 /**
  * The component for site-wide routes rendered by the App component.

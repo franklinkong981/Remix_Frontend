@@ -61,7 +61,7 @@ class RemixApi {
     return res.token;
   }
 
-  /** Gets information about the current logged in user such as their first name, last name, and email.  */
+  /** Gets information about the current logged in user. Gets their username, email, 3 most recent recipes, and 3 most recent remixes.  */
   static async getCurrentLoggedInUser(username) {
     let res = await this.request(`users/${username}`);
     return res.userDetails;
@@ -70,7 +70,7 @@ class RemixApi {
   /** Updates logged in user's information in the database. Can update username and email. Returns updated username and email. */
   static async updateUserProfile(username, updateProfileFormValues) {
     let res = await this.request(`users/${username}`, updateProfileFormValues, "patch");
-    return res.updatedUser;
+    return res;
   }
 
 }
