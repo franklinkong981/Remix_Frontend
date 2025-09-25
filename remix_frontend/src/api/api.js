@@ -73,6 +73,29 @@ class RemixApi {
     return res;
   }
 
+  /** Retrieves basic information on all recipes belonging to a specific user in chronological order, most recent first. */
+  static async getUsersRecipes(username) {
+    let res = await this.request(`users/${username}/recipes`);
+    return res.allUserRecipes;
+  }
+
+  /** Retrieves basic information on all remixes belonging to a specific user in chronological order, most recent first. */
+  static async getUsersRemixes(username) {
+    let res = await this.request(`/users/${username}/remixes`);
+    return res.allUserRemixes;
+  }
+
+  /** Retrieves every recipe review made by a specific user in chronological order, most recent first. */
+  static async getUsersRecipeReviews(username) {
+    let res = await this.request(`/users/${username}/reviews/recipes`);
+    return res.userRecipeReviews;
+  }
+
+  /** Retrieves every remix review made by a specific user in chronological order, most recent first. */
+  static async getUsersRemixReviews(username) {
+    let res = await this.request(`/users/${username}/reviews/remixes`);
+    return res.userRemixReviews;
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.
