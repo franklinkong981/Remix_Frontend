@@ -18,7 +18,7 @@ import CurrentUserContext from "../../contexts/currentUserContext.jsx";
  * Alert messages will be displayed if user inputs don't match expected criteria, confirmation of a successful save is a simple Alert component.
  */
 function UpdateProfileForm() {
-  const {currentUserInfo, setCurrentUserInfo} = useContext(CurrentUserContext);
+  const {currentUserInfo, setCurrentUserInfo, userToken, setUserToken} = useContext(CurrentUserContext);
 
   const [profileFormData, setProfileFormData] = useState({
     username: currentUserInfo.username,
@@ -51,31 +51,27 @@ function UpdateProfileForm() {
     };
 
     let username = currentUserInfo.username;
-    console.log(`The username is ${username}`);
-    console.log(currentUserInfo);
     let updatedUserInfo;
+    console.log(`The old token is ${userToken}`);
 
     try {
       updatedUserInfo = await RemixApi.updateUserProfile(username, updateProfileFormValues);
     } catch(errors) {
+      setUpdateProfileSuccessful(false);
       setProfileFormErrors(errors);
       return;
     }
 
-    setProfileFormData(profileFormData => ({...profileFormData}));
     setProfileFormErrors([]);
     setUpdateProfileSuccessful(true);
-
-    // triggers current user info throughout the site. Updates the username and email in currentUserInfo object.
-    setCurrentUserInfo(currentUserInfo => ({
-      ...currentUserInfo,
-      username: updatedUserInfo.updatedUser.username,
-      email: updatedUserInfo.updatedUser.email
-    }));
-
-    setUserToken(userToken => updatedUserInfo.updatedToken);
+    console.log(`The new token is ${updatedUserInfo.updatedToken}`);
     
-    console.log(currentUserInfo);
+
+    // The RemixApi method updateUserProfile updates the user information (new username and email) in the backend database,
+    // then returns an updated token string containing the new payload that includes the updated username and email.
+    // Setting the user token to this new string updates currentUserInfo as well and triggers a re-render, so that the entire site
+    // is updated with this new user information.
+    setUserToken(updatedUserInfo.updatedToken);
   }
 
   return (
