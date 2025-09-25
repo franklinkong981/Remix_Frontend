@@ -1,0 +1,28 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+import "./RecipeCard.css";
+
+/**
+ * Shows basic information about a recipe such as its name, description, image, and when it was created, as a sort of preview of the recipe. 
+ * Clicking on the card will take you to the recipe details page.
+ * Rendered by RecipeList component to show a card for each recipe.
+ * Also contains a link to the recipe details page.
+ */
+function RecipeCard({id, name, description, imageUrl, createdAt}) {
+
+  return (
+    <section className="RecipeCard card">
+      <img class="RecipeCard-image card-img-top" src={imageUrl} alt={`Picture of ${name}`}></img>
+      <div className="RecipeCard-content card-body">
+        <h3 className="RecipeCard-title card-title">
+          {name}
+        </h3>
+        <p className="RecipeCard-description">{description}</p>
+        <p className="RecipeCard-createdAt">Created on {createdAt}</p>
+      </div>
+    </section>
+  );
+}
+
+export default RecipeCard;
