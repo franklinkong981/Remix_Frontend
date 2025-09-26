@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 
+import {useParams} from "react-router-dom";
+
 import RecipeList from "../recipes/RecipeList.jsx";
 import RemixApi from "../../api/api.js";
 
-import {v4 as uuidv4} from "uuid";
+//import {v4 as uuidv4} from "uuid";
 
 /**
  * Top-level component for the page that shows the list of recipes belonging to a specific user.
@@ -14,6 +16,7 @@ import {v4 as uuidv4} from "uuid";
  * Contains RecipeList component.
  */
 function UserRecipeList() {
+  const params = useParams();
   const [listOfRecipes, setListOfRecipes] = useState(null);
 
   // Retrieve user's recipes data from database. While this is happening,
@@ -21,7 +24,7 @@ function UserRecipeList() {
   // After the recipe list is retrieved, displays them each as a RecipeCard component in a RecipeList component
   useEffect(function loadRecipesWhenMounted() {
     async function fetchRecipes() {
-      const userRecipes = await RemixApi.getAllUsersRecipes();
+      const userRecipes = await RemixApi.getUsersRecipes(params.username);
       setListOfRecipes(userRecipes);
     }
     fetchRecipes();
