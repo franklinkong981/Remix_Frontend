@@ -26,10 +26,18 @@ function UserRecipeList() {
     }
     fetchRecipes();
   }, []);
+
+  //if listOfRecipes is empty, will still be truthy, so won't show loading screen.
+  if (!listOfRecipes) {
+    return <h1 className="UserRecipeList-loading">Loading...</h1>
+  }
   
   return (
     <div className="UserRecipeList">
-      
+      <h1 className="UserRecipeList-header">Your Recipes</h1>
+      {listOfRecipes.length ? (
+        <RecipeList recipes={listOfRecipes}/>
+      ) : <p className="UserRecipeList-no-companies">You currently have not created any recipes.</p>}
     </div>
   );
 }
