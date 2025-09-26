@@ -22,7 +22,12 @@ function Homepage() {
       {currentUserInfo ? (
         <div className="Homepage-logged-in container text-center">
           <h1 className="Homepage-logged-in-title mb-4 font-weight-bold">Welcome back {currentUserInfo.username}!</h1>
-          <p className="Homepage-logged-in-subtitle lead">More features coming soon!</p>
+          <p className="Homepage-logged-in-subtitle lead">See your recipes, remixes, and reviews below.</p>
+          <div className="Homepage-logged-in-links">
+            <Link className="Homepage-logged-in-companies-link btn btn-secondary font-weight-bold mr-3" to={`/users/${currentUserInfo.username}/recipes`}>
+              See Your Recipes
+            </Link>
+          </div>
         </div>
       ) : (
         <div className="Homepage-logged-out container text-center">
