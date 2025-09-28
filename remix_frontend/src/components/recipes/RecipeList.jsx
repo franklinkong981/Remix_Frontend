@@ -27,7 +27,7 @@ function RecipeList({recipes}) {
             />
           ))}
         </div>
-      ) : <p className="RecipeList-no-companies">No recipes found</p>}
+      ) : <p className="RecipeList-no-recipes">No recipes found</p>}
     </div>
   );
 }
