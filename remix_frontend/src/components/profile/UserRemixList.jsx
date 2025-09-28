@@ -39,7 +39,7 @@ function UserRemixList() {
     <div className="UserRemixList">
       <h1 className="UserRemixList-header">Your Remixes</h1>
       {listOfRemixes.length ? (
-        <RemixList recipes={listOfRemixes}/>
+        <RemixList remixes={listOfRemixes}/>
       ) : <p className="UserRemixList-no-remixes">You currently have not created any remixes.</p>}
     </div>
   );
