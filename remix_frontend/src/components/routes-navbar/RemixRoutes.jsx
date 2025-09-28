@@ -8,6 +8,7 @@ import LoginForm from "../auth/LoginForm.jsx";
 import SignUpForm from "../auth/SignUpForm.jsx";
 
 import UserRecipeList from "../profile/UserRecipeList.jsx";
+import UserRemixList from "../profile/UserRemixList.jsx";
 
 import UpdateProfileForm from "../profile/UpdateProfileForm.jsx";
 
@@ -28,6 +29,9 @@ function RemixRoutes({signUpFunc, loginFunc}) {
 
         <Route path="/users/:username/recipes" element={<ProtectedRoute> 
           <UserRecipeList /> 
+        </ProtectedRoute>} />
+        <Route path="/users/:username/remixes" element={<ProtectedRoute> 
+          <UserRemixList /> 
         </ProtectedRoute>} />
         
         <Route path="/profile" element={<ProtectedRoute> 
