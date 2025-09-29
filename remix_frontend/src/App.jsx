@@ -18,7 +18,14 @@ export const TOKEN_STORAGE_ID = "remix-token";
 
 /** 
  * userInfoLoaded: Has currently logged in user's data been returned from API? If not, display loading text on screen.
+ * 
  * currentUserInfo: Object containing user information from API, this is used to determine if someone is logged in.
+ * currentUserInfo contains logged in user's username, email, their 3 most recent recipes, their 3 most recent remixes, their most recen
+ * recipe review, and their most recent remix review.
+ * 
+ * currentUserInfo object layout: {username, email, recipes: [ {id, name, description, imageUrl, createdAt}, ... ], remixes: [ {id, name, description, originalRecipe, imageUrl, createdAt}, ... ],
+ *                                recipeReview: {recipeId, recipeName, title, content, createdAt}, remixReivew: {remixId, remixName, title, content, createdAt} } 
+ * 
  * userToken: JWT for logged in users, most API calls will require this in the headers. 
  * userToken is initially read from localStorage when the page is first loaded/refreshed, if not there it will be set to null.
  * 
