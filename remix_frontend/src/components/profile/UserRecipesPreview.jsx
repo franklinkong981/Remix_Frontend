@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useContext} from "react";
 
-import {useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
+
+import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
 import RecipeList from "../recipes/RecipeList.jsx";
-import RemixApi from "../../api/api.js";
 
 //import {v4 as uuidv4} from "uuid";
 
@@ -17,7 +18,8 @@ import RemixApi from "../../api/api.js";
  * Contains RecipeList component.
  */
 function UserRecipesPreview({recipes}) {
-  
+  const {currentUserInfo} = useContext(CurrentUserContext);
+
   return (
     <div className="UserRecipesPreview">
       <h1 className="UserRecipesPreview-header">Your Newest Recipes</h1>

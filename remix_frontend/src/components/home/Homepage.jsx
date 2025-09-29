@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/currentUserContext.jsx";
+
 import UserRecipesPreview from "../profile/UserRecipesPreview.jsx";
 
 import "./Homepage.css";
@@ -38,6 +39,7 @@ function Homepage() {
               See Your Remix Reviews
             </Link>
           </div>
+          <hr />
           <UserRecipesPreview recipes={currentUserInfo.recipes}/>
         </div>
       ) : (
