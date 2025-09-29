@@ -15,9 +15,9 @@ import {v4 as uuidv4} from "uuid";
 function RecipeReviewList({recipeReviews}) {
   return (
     <div className="RecipeReviewList col-md-8 offset-md-2">
-      {recipesReviews.length ? (
+      {recipeReviews.length ? (
         <div className="RecipeReviewList-list">
-          {recipesReviews.map(recipeReview => (
+          {recipeReviews.map(recipeReview => (
             <RecipeReview key={uuidv4()} 
               recipeId={recipeReview.recipeId} 
               recipeName={recipeReview.recipeName}
