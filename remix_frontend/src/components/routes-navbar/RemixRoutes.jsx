@@ -30,8 +30,14 @@ function RemixRoutes({signUpFunc, loginFunc}) {
         <Route path="/users/:username/recipes" element={<ProtectedRoute> 
           <UserRecipeList /> 
         </ProtectedRoute>} />
+        <Route path="/users/:username/reviews/recipes" element={<ProtectedRoute> 
+          <UserRecipeReviewList /> 
+        </ProtectedRoute>} />
         <Route path="/users/:username/remixes" element={<ProtectedRoute> 
           <UserRemixList /> 
+        </ProtectedRoute>} />
+        <Route path="/users/:username/reviews/remixes" element={<ProtectedRoute> 
+          <UserRemixReviewList /> 
         </ProtectedRoute>} />
         
         <Route path="/profile" element={<ProtectedRoute> 

@@ -27,8 +27,14 @@ function Homepage() {
             <Link className="Homepage-logged-in-recipes-link btn btn-secondary font-weight-bold mr-3" to={`/users/${currentUserInfo.username}/recipes`}>
               See Your Recipes
             </Link>
+            <Link className="Homepage-logged-in-recipe-reviews-link btn btn-secondary font-weight-bold mr-3" to={`/users/${currentUserInfo.username}/reviews/recipes`}>
+              See Your Recipe Reviews
+            </Link>
             <Link className="Homepage-logged-in-remixes-link btn btn-secondary font-weight-bold mr-3" to={`/users/${currentUserInfo.username}/remixes`}>
               See Your Remixes
+            </Link>
+            <Link className="Homepage-logged-in-remixes-link btn btn-secondary font-weight-bold mr-3" to={`/users/${currentUserInfo.username}/reviews/remixes`}>
+              See Your Remix Reviews
             </Link>
           </div>
         </div>
