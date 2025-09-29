@@ -13,7 +13,7 @@ function RemixReview({remixId, remixName, title, content, createdAt}) {
   return (
     <section className="RemixReview card">
       <div className="RemixReview-content card-body">
-        <h3 className="RemixReview-recipe-name">Review of {remixName}</h3>
+        <p className="RemixReview-recipe-name">Review of {remixName}</p>
         <h1 className="RemixReview-title card-title">
           {title}
         </h1>

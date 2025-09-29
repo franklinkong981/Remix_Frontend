@@ -13,7 +13,7 @@ function RecipeReview({recipeId, recipeName, title, content, createdAt}) {
   return (
     <section className="RecipeReview card">
       <div className="RecipeReview-content card-body">
-        <h3 className="RecipeReview-recipe-name">Review of {recipeName}</h3>
+        <p className="RecipeReview-recipe-name">Review of {recipeName}</p>
         <h1 className="RecipeReview-title card-title">
           {title}
         </h1>

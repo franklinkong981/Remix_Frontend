@@ -9,6 +9,8 @@ import SignUpForm from "../auth/SignUpForm.jsx";
 
 import UserRecipeList from "../profile/UserRecipeList.jsx";
 import UserRemixList from "../profile/UserRemixList.jsx";
+import UserRecipeReviewList from "../profile/UserRecipeReviewList.jsx";
+import UserRemixReviewList from "../profile/UserRemixReviewList.jsx";
 
 import UpdateProfileForm from "../profile/UpdateProfileForm.jsx";
 
