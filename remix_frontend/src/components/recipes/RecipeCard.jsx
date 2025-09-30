@@ -13,7 +13,7 @@ function RecipeCard({id, name, description, imageUrl, createdAt}) {
 
   return (
     <section className="RecipeCard card">
-      <img class="RecipeCard-image card-img-top" src={imageUrl} alt={`Picture of ${name}`}></img>
+      <img className="RecipeCard-image card-img-top" src={imageUrl} alt={`Picture of ${name}`}></img>
       <div className="RecipeCard-content card-body">
         <h3 className="RecipeCard-title card-title">
           {name}

@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
 import UserRecipesPreview from "../profile/UserRecipesPreview.jsx";
+import UserRecipeReviewsPreview from "../profile/UserRecipeReviewsPreview.jsx";
 
 import "./Homepage.css";
 
@@ -41,6 +42,7 @@ function Homepage() {
           </div>
           <hr />
           <UserRecipesPreview recipes={currentUserInfo.recipes}/>
+          <UserRecipeReviewsPreview recipeReview={currentUserInfo.recipeReview} />
         </div>
       ) : (
         <div className="Homepage-logged-out container text-center">

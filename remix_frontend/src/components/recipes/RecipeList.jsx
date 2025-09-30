@@ -13,6 +13,7 @@ import {v4 as uuidv4} from "uuid";
  * Contains RecipeCard components.
  */
 function RecipeList({recipes}) {
+
   return (
     <div className="RecipeList col-md-8 offset-md-2">
       {recipes.length ? (
