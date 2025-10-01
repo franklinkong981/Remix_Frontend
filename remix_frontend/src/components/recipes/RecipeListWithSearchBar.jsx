@@ -31,21 +31,23 @@ function RecipeListWithSearchBar() {
   }, []);
 
   /**
-   * Filters companies to display that match the search query, triggered upon search bar submission.
-   * Calls the API to return filtered companies and reloads the CompanyList component which now only displays filtered companies.
+   * Filters recipes to display that match the search query, triggered upon clicking the search button.
+   * Calls the API to return filtered recipes and reloads the RecipeList component which now only displays filtered recipes whose names
+   * match/contain the search query. Matching recipes will still be listed by name in alphabetical order.
    */
-  const filterCompanySearch = async (searchQuery) => {
-    let filteredCompanies;
+  const filterRecipeSearch = async (searchQuery) => {
+    let filteredRecipes;
     if (searchQuery) {
-      filteredCompanies = await JoblyApi.getFilteredCompaniesByName(searchQuery);
+      filteredRecipes = await RemixApi.getFilteredRecipesByName(searchQuery);
     } else {
-      filteredCompanies = await JoblyApi.getAllCompanies();
+      filteredRecipes = await RemixApi.getAllRecipes();
     }
 
-    setListOfCompanies(listOfCompanies => filteredCompanies);
+    setListOfRecipes(listOfRecipes => filteredRecipes);
   };
   
-  if (!listOfCompanies) {
+  //listOfRecipes being empty array won't be undefined.
+  if (!listOfRecipes) {
     return <h1>Loading...</h1>
   }
   
