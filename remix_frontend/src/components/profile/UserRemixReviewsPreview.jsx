@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
-import RemixReviewList from "../recipes/RemixReviewList.jsx";
+import RemixReviewList from "../remixes/RemixReviewList.jsx";
 
 //import {v4 as uuidv4} from "uuid";
 

@@ -6,6 +6,7 @@ import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 import UserRecipesPreview from "../profile/UserRecipesPreview.jsx";
 import UserRecipeReviewsPreview from "../profile/UserRecipeReviewsPreview.jsx";
 import UserRemixesPreview from "../profile/UserRemixesPreview.jsx";
+import UserRemixReviewsPreview from "../profile/UserRemixReviewsPreview.jsx";
 
 import "./Homepage.css";
 
@@ -45,7 +46,7 @@ function Homepage() {
           <UserRecipesPreview recipes={currentUserInfo.recipes}/>
           <UserRecipeReviewsPreview recipeReview={currentUserInfo.recipeReview} />
           <UserRemixesPreview remixes={currentUserInfo.remixes} />
-          
+          <UserRemixReviewsPreview remixReview={currentUserInfo.remixReview} />
         </div>
       ) : (
         <div className="Homepage-logged-out container text-center">
