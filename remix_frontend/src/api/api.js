@@ -96,6 +96,12 @@ class RemixApi {
     let res = await this.request(`users/${username}/reviews/remixes`);
     return res.userRemixReviews;
   }
+
+  /** Retrieves basic info about every recipe in the database, such as its id, name, description, etc. by recipe name in alphabetical order. */
+  static async getAllRecipes() {
+    let res = await this.request(`recipes`);
+    return res.recipeSearchResults;
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.
