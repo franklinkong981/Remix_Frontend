@@ -22,11 +22,14 @@ function RecipeReviewsPreview({recipeId, recipeName, recipeReview}) {
 
   return (
     <div className="RecipeReviewsPreview">
-      <h1 className="RecipeReviewsPreview-header">Newest Review</h1>
+      <h1 className="RecipeReviewsPreview-header">Newest Review for {recipeName}</h1>
       {isRecipeReviewValid ? (
         <>
           <RecipeReviewList recipeReviews={[recipeReview]}/>
-          <Link className="RecipeReviewsPreview-all-recipe-reviews btn btn-secondary font-weight-bold mr-3" to={`/recipes/${recipeId}/reviews`}>
+          <Link className="RecipeReviewsPreview-all-recipe-reviews btn btn-secondary font-weight-bold mr-3" 
+                to={`/recipes/${recipeId}/reviews`}
+                state={{recipeId, recipeName}}
+          >
             See All Reviews for this Recipe
           </Link>
         </>

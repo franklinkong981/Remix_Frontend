@@ -17,29 +17,27 @@ import RecipeReviewsPreview from "./RecipeReviewsPreview.jsx";
  * Contains the RemixList and the RecipeReviewsPreview components.
  * 
  */
-function CompanyDetail() {
-  const {name} = useParams();
-  const [companyInfo, setCompanyInfo] = useState(null);
+function RecipeDetail() {
+  const {recipeId} = useParams();
+  const [recipeDetailedInfo, setRecipeDetailedInfo] = useState(null);
 
-  //retrieve detailed info about company, including its list of job openings, from the API.
-  // While this is happening, the word "Loading" is displayed on the screen. Company and job information won't be displayed 
-  // until the information is returned from the API.
-  useEffect(function loadComapnyDetailsWhenMounted() {
-    async function fetchCompanyDetailsAndJobs() {
-      const company = await JoblyApi.getCompany(name);
-      setCompanyInfo(company);
+  //retrieve detailed info about recipe, including its 3 most recently added remixes and most recently added review from the Remix API.
+  // While this is happening, the word "Loading" is displayed on the screen. Recipe, remix, and recipe review information won't be displayed 
+  // until the detailed information of the recipe is returned from the API.
+  useEffect(function loadRecipeDetailsWhenMounted() {
+    async function fetchRecipeDetails() {
+      const recipe = await RemixApi.getRecipeDetails(recipeId);
+      setRecipeDetailedInfo(recipe);
     }
-    fetchCompanyDetailsAndJobs();
-  }, [name]);
+    fetchRecipeDetails();
+  }, [recipeId]);
 
-  if (!companyInfo) return <h1>Loading...</h1>
+  if (!recipeDetailedInfo) return <h1>Loading...</h1>
 
   return (
-    <div className="CompanyDetail col-md-8 offset-md-2">
-      <h3 className="CompanyDetail-headline">Current Openings for {companyInfo.name}</h3>
-      <p className="CompanyDetail-description">{companyInfo.description}</p>
-      <p className="CompanyDetail-employees">Current number of employees: {companyInfo.numEmployees}</p>
-      <JobPostingList listOfJobs={companyInfo.jobs} isGeneral={false} />
+    <div className="RecipeDetail col-md-8 offset-md-2">
+      <h1 className="RecipeDetail-name">{recipeDetailedInfo.name}</h1>
+      <RecipeReviewsPreview recipeId={recipeDetailedInfo.id} recipeName={recipeDetailedInfo.name} recipeReview={recipeDetailedInfo.mostRecentRecipeReview} />
     </div>
   );
 }

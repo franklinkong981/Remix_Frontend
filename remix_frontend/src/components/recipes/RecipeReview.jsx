@@ -8,12 +8,13 @@ import "./RecipeReview.css";
  * Name of the recipe will be a link to the recipe details page.
  * Rendered by the RecipeReviewList component.
  */
-function RecipeReview({recipeId, recipeName, title, content, createdAt}) {
+function RecipeReview({reviewId=0, reviewAuthor="", recipeId=0, recipeName="", title, content, createdAt}) {
 
   return (
     <section className="RecipeReview card">
       <div className="RecipeReview-content card-body">
         <p className="RecipeReview-recipe-name">Review of {recipeName}</p>
+        <p className="RecipeReview-recipe-author">Created by {reviewAuthor}</p>
         <h1 className="RecipeReview-title card-title">
           {title}
         </h1>

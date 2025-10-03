@@ -116,6 +116,14 @@ class RemixApi {
     let res = await this.request(`/recipes/${recipeId}`);
     return res.recipeDetails;
   }
+
+  /** Returns information about all recipe reviews of a specific recipe with the recipeId. For each recipe review, returns the
+   * review id, username of user who created this review (reviewAuthor), title of the review, content, and date/time the review was created.
+   */
+  static async getAllRecipeReviews(recipeId) {
+    let res = await this.request(`/recipes/${recipeId}/reviews`);
+    return res.recipeReviews;
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.
