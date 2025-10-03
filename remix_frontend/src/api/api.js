@@ -97,9 +97,15 @@ class RemixApi {
     return res.userRemixReviews;
   }
 
-  /** Retrieves basic info about every recipe in the database, such as its id, name, description, etc. by recipe name in alphabetical order. */
-  static async getAllRecipes() {
-    let res = await this.request(`recipes`);
+  /** If searchQuery is empty, retrieves basic info about every recipe in the database, such as its id, name, description, etc. 
+   * by recipe name in alphabetical order. Otherwise, return the information for only the recipes whose names match/contain the searchQuery.*/
+  static async getFilteredRecipes(searchQuery="") {
+    let res;
+    if (searchQuery) {
+      res = await this.request(`recipes?recipeName=${searchQuery}`);
+    } else {
+      res = await this.request(`recipes`);
+    }
     return res.recipeSearchResults;
   }
 }

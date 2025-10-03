@@ -24,7 +24,7 @@ function RecipeListWithSearchBar() {
   // Initial list of all recipes won't be displayed until recipe data is returned from Api.
   useEffect(function loadAllRecipesWhenMounted() {
     async function fetchRecipes() {
-      const recipes = await RemixApi.getAllRecipes();
+      const recipes = await RemixApi.getFilteredRecipes();
       setListOfRecipes(recipes);
     }
     fetchRecipes();
@@ -35,12 +35,12 @@ function RecipeListWithSearchBar() {
    * Calls the API to return filtered recipes and reloads the RecipeList component which now only displays filtered recipes whose names
    * match/contain the search query. Matching recipes will still be listed by name in alphabetical order.
    */
-  const filterRecipeSearch = async (searchQuery) => {
+  const filterRecipeSearch = async (searchQuery = "") => {
     let filteredRecipes;
-    if (searchQuery) {
-      filteredRecipes = await RemixApi.getFilteredRecipesByName(searchQuery);
+    if (searchQuery.trim()) {
+      filteredRecipes = await RemixApi.getFilteredRecipes(searchQuery.trim());
     } else {
-      filteredRecipes = await RemixApi.getAllRecipes();
+      filteredRecipes = await RemixApi.getFilteredRecipes();
     }
 
     setListOfRecipes(listOfRecipes => filteredRecipes);
@@ -53,6 +53,8 @@ function RecipeListWithSearchBar() {
   
   return (
     <div className="RecipeListWithSearchBar col-md-8 offset-md-2">
+      <h1 className="RecipeListWithSearchBar-header">Search for Recipes Below </h1>
+      <p className="RecipeListWithSearchBar-directions">Recipes will be filtered by name. To display all recipes, delete the search query and press the search button again.</p>
       <SearchBar filterFunc={filterRecipeSearch} placeholder="Search by recipe name"/>
       {listOfRecipes.length ? (
         <RecipeList recipes={listOfRecipes} />
