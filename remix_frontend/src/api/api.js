@@ -108,6 +108,14 @@ class RemixApi {
     }
     return res.recipeSearchResults;
   }
+
+  /** Returns detailed information about a specific recipe with the id of recipeId, such as its name, description, ingredients,
+   *  directions, etc. Also returns basic information about each of its remixes as well as the most recently added recipe review.
+   */
+  static async getRecipeDetails(recipeId) {
+    let res = await this.request(`/recipes/${recipeId}`);
+    return res.recipeDetails;
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.

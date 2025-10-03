@@ -52,6 +52,8 @@ function RemixRoutes({signUpFunc, loginFunc}) {
           <RecipeListWithSearchBar />
         </ProtectedRoute>} />
 
+        
+
         <Route exact path="/" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
