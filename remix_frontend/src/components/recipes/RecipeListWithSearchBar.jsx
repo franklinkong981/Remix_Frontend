@@ -52,15 +52,11 @@ function RecipeListWithSearchBar() {
   }
   
   return (
-    <div className="CompanyList col-md-8 offset-md-2">
-      <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
-      {listOfCompanies.length ? (
-        <div className="CompanyList-list">
-          {listOfCompanies.map(company => (
-            <CompanyCard id={company.handle} name={company.name} description={company.description} key={uuidv4()}/>
-          ))}
-        </div>
-      ) : <p className="CompanyList-no-companies">No companies found</p>}
+    <div className="RecipeListWithSearchBar col-md-8 offset-md-2">
+      <SearchBar filterFunc={filterRecipeSearch} placeholder="Search by recipe name"/>
+      {listOfRecipes.length ? (
+        <RecipeList recipes={listOfRecipes} />
+      ) : <p className="RecipeListWithSearchBar-no-recipes">No recipes found. Please search for a different name.</p>}
     </div>
   );
 }
