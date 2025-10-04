@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-import {useParams, useLocation} from "react-router-dom";
+import {useParams, useLocation, Link} from "react-router-dom";
 
 import RecipeReviewList from "./RecipeReviewList.jsx";
 import RemixApi from "../../api/api.js";
@@ -41,8 +41,7 @@ function FullRecipeReviewList() {
   return (
     <div className="FullRecipeReviewList">
       <h1 className="FullRecipeReviewList-header">
-        All Recipe Reviews for 
-        <Link className="FullRecipeReviewList-details-page-link" to={`/recipes/${locationRecipe.recipeId}`}>
+        All Recipe Reviews for <Link className="FullRecipeReviewList-details-page-link" to={`/recipes/${locationRecipe.recipeId}`}>
           {locationRecipe.recipeName}
         </Link>
       </h1>
