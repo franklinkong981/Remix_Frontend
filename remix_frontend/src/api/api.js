@@ -124,6 +124,14 @@ class RemixApi {
     let res = await this.request(`recipes/${recipeId}/reviews`);
     return res.recipeReviews;
   }
+
+  /** Returns basic information about all remixes of a specific recipe with the id of recipeId.
+   * Info includes name of remix, description, id, imageUrl, and date/time it was created.
+   */
+  static async getAllRecipeRemixes(recipeId) {
+    let res = await this.request(`recipes/${recipeId}/remixes`);
+    return res.remixes;
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.

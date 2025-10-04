@@ -47,6 +47,7 @@ function RecipeDetail() {
       <p className="RecipeDetails-cooking-time">Cooking Time: {recipeDetailedInfo.cookingTime > 0 ? recipeDetailedInfo.cookingTime : "N/A"}</p>
       <p className="RecipeDetails-servings">Servings: {recipeDetailedInfo.servings > 0 ? recipeDetailedInfo.servings : "N/A"}</p>
       <hr />
+      
     </div>
   );
 }
