@@ -2,8 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 
 import RemixApi from "../../api/api.js";
-import RemixList from "../remixes/RemixList.jsx";
-import RecipeReviewsPreview from "./RecipeReviewsPreview.jsx";
+
 
 /**
  * Recipe Details page top-level component.
@@ -43,7 +42,7 @@ function RecipeDetail() {
       <p className="RecipeDetail-author">Created by {recipeDetailedInfo.recipeAuthor} on {recipeDetailedInfo.createdAt}.</p>
       <hr />
       <h3 className="RecipeDetails-details-header">Recipe Details:</h3>
-      <p className="RecipeDetails-ingredients">Ingredients: {recipeDetialedInfo.ingredients}</p>
+      <p className="RecipeDetails-ingredients">Ingredients: {recipeDetailedInfo.ingredients}</p>
       <p className="RecipeDetails-directions">Instructions: {recipeDetailedInfo.directions}</p>
       <p className="RecipeDetails-cooking-time">Cooking Time: {recipeDetailedInfo.cookingTime > 0 ? recipeDetailedInfo.cookingTime : "N/A"}</p>
       <p className="RecipeDetails-servings">Servings: {recipeDetailedInfo.servings > 0 ? recipeDetailedInfo.servings : "N/A"}</p>

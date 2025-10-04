@@ -113,7 +113,7 @@ class RemixApi {
    *  directions, etc. Also returns basic information about its 3 most recent remixes as well as the most recently added recipe review.
    */
   static async getRecipeDetails(recipeId) {
-    let res = await this.request(`/recipes/${recipeId}`);
+    let res = await this.request(`recipes/${recipeId}`);
     return res.recipeDetails;
   }
 
@@ -121,7 +121,7 @@ class RemixApi {
    * review id, username of user who created this review (reviewAuthor), title of the review, content, and date/time the review was created.
    */
   static async getAllRecipeReviews(recipeId) {
-    let res = await this.request(`/recipes/${recipeId}/reviews`);
+    let res = await this.request(`recipes/${recipeId}/reviews`);
     return res.recipeReviews;
   }
 }
