@@ -8,6 +8,10 @@ import {v4 as uuidv4} from "uuid";
  * Component that shows a list of recipe reviews, with each recipe review being a RecipeReview component.
  * Is used for pages that show a specific list of recipe reviews (ex. all recipe reviews belonging to a specific user).
  * 
+ * The content each recipe review will have will be based on the page it's on.
+ * If it's on a user profile page, it will display the id and name of the recipe it's a review of (recipeId, and recipeName)
+ * If it's on the recipe details page, it will display the username of the user who created this review (reviewId and reviewAuthor)
+ * 
  * No state in this component, the list of recipe reviews (an array of recipe review objects) to display is passed in.
  * 
  * Contains RecipeReview components.

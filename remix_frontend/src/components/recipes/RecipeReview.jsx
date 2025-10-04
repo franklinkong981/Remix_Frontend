@@ -13,8 +13,14 @@ function RecipeReview({reviewId=0, reviewAuthor="", recipeId=0, recipeName="", t
   return (
     <section className="RecipeReview card">
       <div className="RecipeReview-content card-body">
-        <p className="RecipeReview-recipe-name">Review of {recipeName}</p>
-        <p className="RecipeReview-recipe-author">Created by {reviewAuthor}</p>
+        {recipeName ? (
+          <p className="RecipeReview-recipe-name">Review of 
+            <Link className="RecipeReview-link font-weight-bold" to={`/recipes/${recipeId}`}>
+              {recipeName}
+            </Link>
+          </p>
+        ) : null}
+        {reviewAuthor ? <p className="RecipeReview-recipe-author">Created by {reviewAuthor}</p> : null}
         <h1 className="RecipeReview-title card-title">
           {title}
         </h1>

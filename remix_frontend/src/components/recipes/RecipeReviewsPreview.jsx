@@ -16,7 +16,7 @@ import RecipeReviewList from "../recipes/RecipeReviewList.jsx";
  */
 function RecipeReviewsPreview({recipeId, recipeName, recipeReview}) {
 
-  //tests to see whether recipeReview is an object with properties or not. If the recipe doesn't have any recipe reviews, 
+  // tests to see whether recipeReview is an object with properties or not. If the recipe doesn't have any recipe reviews, 
   // the recipeReview object prop will be empty.
   const isRecipeReviewValid = (recipeReview !== null) && (typeof recipeReview === 'object') && (Object.keys(recipeReview).length > 0);
 
