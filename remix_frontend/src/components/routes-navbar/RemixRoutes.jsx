@@ -15,6 +15,7 @@ import UserRemixReviewList from "../profile/UserRemixReviewList.jsx";
 import UpdateProfileForm from "../profile/UpdateProfileForm.jsx";
 
 import RecipeListWithSearchBar from "../recipes/RecipeListWithSearchBar.jsx";
+import RecipeDetail from "../recipes/RecipeDetail.jsx";
 
 /**
  * The component for site-wide routes rendered by the App component.
@@ -51,8 +52,9 @@ function RemixRoutes({signUpFunc, loginFunc}) {
         <Route path="/recipes" element={<ProtectedRoute>
           <RecipeListWithSearchBar />
         </ProtectedRoute>} />
-
-        
+        <Route path="/recipes/:recipeId" element={<ProtectedRoute>
+          <RecipeDetail />
+        </ProtectedRoute>} />
 
         <Route exact path="/" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/"/>}/>
