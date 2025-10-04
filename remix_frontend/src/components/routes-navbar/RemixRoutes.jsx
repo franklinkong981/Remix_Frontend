@@ -59,6 +59,9 @@ function RemixRoutes({signUpFunc, loginFunc}) {
         <Route path="/recipes/:recipeId/reviews" element={<ProtectedRoute>
           <FullRecipeReviewList />
         </ProtectedRoute>} />
+        <Route path="/recipes/:recipeId/remixes" element={<ProtectedRoute>
+          <FullRecipeRemixList />
+        </ProtectedRoute>} />
 
         <Route exact path="/" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/"/>}/>
