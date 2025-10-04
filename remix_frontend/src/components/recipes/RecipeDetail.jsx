@@ -8,13 +8,14 @@ import RecipeReviewsPreview from "./RecipeReviewsPreview.jsx";
 /**
  * Recipe Details page top-level component.
  * This is the page that shows full detailed information about a recipe including ingredients, directions, number of servings, cooking time,
- * the user who created it, etc. which will then be followed by the list of Remixes of the recipe presented as a RemixList component
- * of RemixCard components, followed by the most recently added review of the recipe as a RecipeReviewsPreview component, which contains
+ * the user who created it, etc. which will then be followed by a list of up to 3 of the most recently added Remixes of the recipe presented as a RemixList component
+ * of RemixCard components (and a link to the page that displays all of the remixes of the recipe),
+ * followed by the most recently added review of the recipe as a RecipeReviewsPreview component, which contains
  * a link to the page that lists out all recipe reviews of the recipe.
  * 
  * Route is /recipes/:recipeId
  * 
- * Contains the RemixList and the RecipeReviewsPreview components.
+ * Contains the RecipeRemixesPreview and the RecipeReviewsPreview components.
  * 
  */
 function RecipeDetail() {
@@ -36,10 +37,21 @@ function RecipeDetail() {
 
   return (
     <div className="RecipeDetail col-md-8 offset-md-2">
+      <img className="RecipeDetail-image" src={recipeDetailedInfo.imageUrl} alt={`Picture of ${recipeDetailedInfo.name}`}></img>
       <h1 className="RecipeDetail-name">{recipeDetailedInfo.name}</h1>
-      <RecipeReviewsPreview recipeId={recipeDetailedInfo.id} recipeName={recipeDetailedInfo.name} recipeReview={recipeDetailedInfo.mostRecentRecipeReview} />
+      <h2 className="RecipeDetail-description">{recipeDetailedInfo.description}</h2>
+      <p className="RecipeDetail-author">Created by {recipeDetailedInfo.recipeAuthor} on {recipeDetailedInfo.createdAt}.</p>
+      <hr />
+      <h3 className="RecipeDetails-details-header">Recipe Details:</h3>
+      <p className="RecipeDetails-ingredients">Ingredients: {recipeDetialedInfo.ingredients}</p>
+      <p className="RecipeDetails-directions">Instructions: {recipeDetailedInfo.directions}</p>
+      <p className="RecipeDetails-cooking-time">Cooking Time: {recipeDetailedInfo.cookingTime > 0 ? recipeDetailedInfo.cookingTime : "N/A"}</p>
+      <p className="RecipeDetails-servings">Servings: {recipeDetailedInfo.servings > 0 ? recipeDetailedInfo.servings : "N/A"}</p>
+      <hr />
     </div>
   );
 }
 
-export default CompanyDetail;
+/*{ recipeDetails: {id, recipeAuthor, name, description, ingredients, directions, cookingTime, servings, 
+ * (3 most recent)remixes: [ {id, name, description, imageUrl, createdAt}, ... ], mostRecentRecipeReview: {id, reviewAuthor, title, content, createdAt}, imageUrl, createdAt} } */
+export default RecipeDetail;
