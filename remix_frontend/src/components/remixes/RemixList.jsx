@@ -23,6 +23,7 @@ function RemixList({remixes}) {
               name={remix.name} 
               description={remix.description}
               originalRecipe={remix.originalRecipe || ""}
+              remixAuthor={remix.remixAuthor || ""}
               imageUrl={remix.imageUrl}
               createdAt={remix.createdAt}
             />
