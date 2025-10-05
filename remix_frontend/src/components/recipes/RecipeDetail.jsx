@@ -3,8 +3,8 @@ import {useParams} from "react-router-dom";
 
 import RemixApi from "../../api/api.js";
 
+import RecipeRemixesPreview from "./RecipeRemixesPreview.jsx";
 import RecipeReviewsPreview from "./RecipeReviewsPreview.jsx";
-
 
 /**
  * Recipe Details page top-level component.
@@ -49,7 +49,7 @@ function RecipeDetail() {
       <p className="RecipeDetails-cooking-time">Cooking Time: {recipeDetailedInfo.cookingTime > 0 ? recipeDetailedInfo.cookingTime : "N/A"}</p>
       <p className="RecipeDetails-servings">Servings: {recipeDetailedInfo.servings > 0 ? recipeDetailedInfo.servings : "N/A"}</p>
       <hr />
-      <Re
+      <RecipeRemixesPreview recipeId={recipeDetailedInfo.id} recipeName={recipeDetailedInfo.name} recipeReview={recipeDetailedInfo.remixes} />
       <RecipeReviewsPreview recipeId={recipeDetailedInfo.id} recipeName={recipeDetailedInfo.name} recipeReview={recipeDetailedInfo.mostRecentRecipeReview}/>
     </div>
   );
