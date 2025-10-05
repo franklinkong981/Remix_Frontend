@@ -35,7 +35,7 @@ function FullRecipeReviewList() {
 
   //if listOfRecipeReviews is empty, will still be truthy, so won't show loading screen.
   if (!listOfRecipeReviews) {
-    return <h1 className="UserRecipeReviewList-loading">Loading...</h1>
+    return <h1 className="FullRecipeReviewList-loading">Loading...</h1>
   }
   
   return (

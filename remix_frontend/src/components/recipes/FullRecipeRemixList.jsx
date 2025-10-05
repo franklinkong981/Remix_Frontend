@@ -22,32 +22,32 @@ function FullRecipeRemixList() {
   const locationRecipe = location.state;
   const [listOfRecipeRemixes, setListOfRecipeRemixes] = useState(null);
 
-  // Retrieve recipe's reviews data from database. While this is happening,
+  // Retrieve recipe's remixes data from database. While this is happening,
   // the "loading" text appears on the page.
-  // After the recipe review list is retrieved, displays them each as a RecipeReview component in a RecipeReviewList component.
-  useEffect(function loadRecipeReviewsWhenMounted() {
-    async function fetchRecipeReviews() {
-      const allRecipeReviews = await RemixApi.getAllRecipeReviews(params.recipeId);
-      setListOfRecipeReviews(allRecipeReviews);
+  // After the recipe remix list is retrieved, displays them each as a RemixCardcomponent in a RemixList component.
+  useEffect(function loadRecipeRemixesWhenMounted() {
+    async function fetchRecipeRemixes() {
+      const allRecipeRemixes = await RemixApi.getAllRecipeRemixes(params.recipeId);
+      setListOfRecipeRemixes(allRecipeRemixes);
     }
-    fetchRecipeReviews();
+    fetchRecipeRemixes();
   }, []);
 
-  //if listOfRecipeReviews is empty, will still be truthy, so won't show loading screen.
-  if (!listOfRecipeReviews) {
-    return <h1 className="UserRecipeReviewList-loading">Loading...</h1>
+  //if listOfRecipeRemixes is empty, will still be truthy, so won't show loading screen.
+  if (!listOfRecipeRemixes) {
+    return <h1 className="FullRecipeRemixList-loading">Loading...</h1>
   }
   
   return (
-    <div className="FullRecipeReviewList">
-      <h1 className="FullRecipeReviewList-header">
-        All Recipe Reviews for <Link className="FullRecipeReviewList-details-page-link" to={`/recipes/${locationRecipe.recipeId}`}>
+    <div className="FullRecipeRemixList">
+      <h1 className="FullRecipeRemixList-header">
+        All Remixes for <Link className="FullRecipeRemixList-details-page-link" to={`/recipes/${locationRecipe.recipeId}`}>
           {locationRecipe.recipeName}
         </Link>
       </h1>
-      {listOfRecipeReviews.length ? (
-        <RecipeReviewList recipeReviews={listOfRecipeReviews}/>
-      ) : <p className="FullRecipeReviewList-no-reviews">This recipe currently doesn't have any recipe reviews.</p>}
+      {listOfRecipeRemixes.length ? (
+        <RemixList remixes={listOfRecipeRemixes}/>
+      ) : <p className="FullRecipeRemixList-no-remixes">This recipe currently doesn't have any remixes.</p>}
     </div>
   );
 }
