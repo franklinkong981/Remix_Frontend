@@ -49,7 +49,7 @@ function RecipeDetail() {
       <p className="RecipeDetails-cooking-time">Cooking Time: {recipeDetailedInfo.cookingTime > 0 ? recipeDetailedInfo.cookingTime : "N/A"}</p>
       <p className="RecipeDetails-servings">Servings: {recipeDetailedInfo.servings > 0 ? recipeDetailedInfo.servings : "N/A"}</p>
       <hr />
-      <RecipeRemixesPreview recipeId={recipeDetailedInfo.id} recipeName={recipeDetailedInfo.name} recipeReview={recipeDetailedInfo.remixes} />
+      <RecipeRemixesPreview recipeId={recipeDetailedInfo.id} recipeName={recipeDetailedInfo.name} remixes={recipeDetailedInfo.remixes} />
       <RecipeReviewsPreview recipeId={recipeDetailedInfo.id} recipeName={recipeDetailedInfo.name} recipeReview={recipeDetailedInfo.mostRecentRecipeReview}/>
     </div>
   );

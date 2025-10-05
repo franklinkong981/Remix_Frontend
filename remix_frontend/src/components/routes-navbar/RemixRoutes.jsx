@@ -16,6 +16,7 @@ import UpdateProfileForm from "../profile/UpdateProfileForm.jsx";
 
 import RecipeListWithSearchBar from "../recipes/RecipeListWithSearchBar.jsx";
 import RecipeDetail from "../recipes/RecipeDetail.jsx";
+import FullRecipeRemixList from "../recipes/FullRecipeRemixList.jsx";
 import FullRecipeReviewList from "../recipes/FullRecipeReviewList.jsx";
 
 /**

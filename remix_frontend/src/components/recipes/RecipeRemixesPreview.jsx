@@ -2,7 +2,7 @@ import React from "react";
 
 import {Link} from "react-router-dom";
 
-import RemixList from "../remixes/RecipeReviewList.jsx";
+import RemixList from "../remixes/RemixList.jsx";
 
 //import {v4 as uuidv4} from "uuid";
 
@@ -21,7 +21,7 @@ function RecipeRemixesPreview({recipeId, recipeName, remixes}) {
       <h1 className="RecipeRemixesPreview-header">Newest Remixes for {recipeName}</h1>
       {remixes.length ? (
         <>
-          <RemixList remixes={[remixes]}/>
+          <RemixList remixes={remixes}/>
           <Link className="RecipeRemixesPreview-all-remixes btn btn-secondary font-weight-bold mr-3" 
                 to={`/recipes/${recipeId}/remixes`}
                 state={{recipeId, recipeName}}
