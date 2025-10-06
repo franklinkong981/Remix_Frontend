@@ -133,6 +133,14 @@ class RemixApi {
     return res.remixes;
   }
 
+  /** Returns detailed information about a specific remix with the id of remixId, such as its name, description, purpose, ingredients,
+   *  directions, etc. Also returns basic information about it most recently added remix review.
+   */
+  static async getRemixDetails(remixId) {
+    let res = await this.request(`remixes/${remixId}`);
+    return res.remixDetails;
+  }
+
   /** Returns information about all remix reviews of a specific remix with the id remixId. For each remix review, returns the
    * review id, username of user who created this review (reviewAuthor), title of the review, content, and date/time the review was created.
    */
