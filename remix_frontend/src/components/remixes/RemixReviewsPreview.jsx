@@ -2,41 +2,41 @@ import React from "react";
 
 import {Link} from "react-router-dom";
 
-import RecipeReviewList from "../recipes/RecipeReviewList.jsx";
+import RemixReviewList from "../recipes/RecipeReviewList.jsx";
 
 //import {v4 as uuidv4} from "uuid";
 
 /**
- * Component for the details page of a recipe that contains the most recently added review of the recipe.
- * Also contains a link to the page that displays the full list of reviews belonging to the recipe.
+ * Component for the details page of a remix that contains the most recently added review of the remix.
+ * Also contains a link to the page that displays the full list of reviews belonging to the remix.
  * 
- * The recipe id (used for link to page for all recipe reviews) and recipe review object containing information about the review will be passed in as props.
+ * The remix id (used for link to page for all remix reviews) and remix review object containing information about the review will be passed in as props.
  * 
- * Contains RecipeReviewList component.
+ * Contains RemixReviewList component.
  */
-function RecipeReviewsPreview({recipeId, recipeName, recipeReview}) {
+function RemixReviewsPreview({remixId, remixName, remixReview}) {
 
-  // tests to see whether recipeReview is an object with properties or not. If the recipe doesn't have any recipe reviews, 
-  // the recipeReview object prop will be empty.
-  const isRecipeReviewValid = (recipeReview !== null) && (typeof recipeReview === 'object') && (Object.keys(recipeReview).length > 0);
+  // tests to see whether remixReview is an object with properties or not. If the remix doesn't have any remix reviews, 
+  // the remixReview object prop will be empty.
+  const isRemixReviewValid = (remixReview !== null) && (typeof remixReview === 'object') && (Object.keys(remixReview).length > 0);
 
   return (
-    <div className="RecipeReviewsPreview">
-      <h1 className="RecipeReviewsPreview-header">Newest Review for {recipeName}</h1>
-      {isRecipeReviewValid ? (
+    <div className="RemixReviewsPreview">
+      <h1 className="RemixReviewsPreview-header">Newest Review for {remixName}</h1>
+      {isRemixReviewValid ? (
         <>
-          <RecipeReviewList recipeReviews={[recipeReview]}/>
-          <Link className="RecipeReviewsPreview-all-recipe-reviews btn btn-secondary font-weight-bold mr-3" 
-                to={`/recipes/${recipeId}/reviews`}
-                state={{recipeId, recipeName}}
+          <RemixReviewList remixReviews={[remixReview]}/>
+          <Link className="RemixReviewsPreview-all-remix-reviews btn btn-secondary font-weight-bold mr-3" 
+                to={`/remixes/${remixId}/reviews`}
+                state={{remixId, remixName}}
           >
-            See All Reviews for this Recipe
+            See All Reviews for this Remix
           </Link>
         </>
-      ) : <p className="RecipeReviewsPreview-no-recipes">This recipe currently does not have any recipe reviews.</p>}
+      ) : <p className="RecipeReviewsPreview-no-remixes">This remix currently does not have any remix reviews.</p>}
       <hr />
     </div>
   );
 }
 
-export default RecipeReviewsPreview;
+export default RemixReviewsPreview;
