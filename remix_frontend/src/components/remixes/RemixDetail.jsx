@@ -3,8 +3,7 @@ import {useParams} from "react-router-dom";
 
 import RemixApi from "../../api/api.js";
 
-import RecipeRemixesPreview from "./RecipeRemixesPreview.jsx";
-import RecipeReviewsPreview from "./RecipeReviewsPreview.jsx";
+import RemixReviewsPreview from "./RemixReviewsPreview.jsx";
 
 /**
  * Remix Details page top-level component.

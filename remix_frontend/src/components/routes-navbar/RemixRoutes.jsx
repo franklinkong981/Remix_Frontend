@@ -19,6 +19,9 @@ import RecipeDetail from "../recipes/RecipeDetail.jsx";
 import FullRecipeRemixList from "../recipes/FullRecipeRemixList.jsx";
 import FullRecipeReviewList from "../recipes/FullRecipeReviewList.jsx";
 
+import RemixDetail from "../remixes/RemixDetail.jsx";
+import FullRemixReviewList from "../remixes/FullRemixReviewList.jsx";
+
 /**
  * The component for site-wide routes rendered by the App component.
  * 
@@ -62,6 +65,13 @@ function RemixRoutes({signUpFunc, loginFunc}) {
         </ProtectedRoute>} />
         <Route path="/recipes/:recipeId/remixes" element={<ProtectedRoute>
           <FullRecipeRemixList />
+        </ProtectedRoute>} />
+
+        <Route path="/remixes/:remixId" element={<ProtectedRoute>
+          <RemixDetail />
+        </ProtectedRoute>} />
+        <Route path="/remixes/:remixId/reviews" element={<ProtectedRoute>
+          <FullRemixReviewList />
         </ProtectedRoute>} />
 
         <Route exact path="/" element={<Homepage />} />
