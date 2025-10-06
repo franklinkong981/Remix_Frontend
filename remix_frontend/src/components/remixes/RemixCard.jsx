@@ -20,7 +20,9 @@ function RemixCard({id, name, description, remixAuthor="", originalRecipe = "", 
       <img class="RemixCard-image card-img-top" src={imageUrl} alt={`Picture of ${name}`}></img>
       <div className="RemixCard-content card-body">
         <h3 className="RemixCard-title card-title">
-          {name}
+          <Link className="RemixCard-link font-weight-bold" to={`/remixes/${id}`}>
+            {name}
+          </Link>
         </h3>
         <p className="RemixCard-description">{description}</p>
         {originalRecipe && <p className="RemixCard-original-recipe">Remix of {originalRecipe}</p>}
