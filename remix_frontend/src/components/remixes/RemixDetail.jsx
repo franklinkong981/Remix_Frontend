@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 
 import RemixApi from "../../api/api.js";
 
@@ -38,8 +38,7 @@ function RemixDetail() {
       <img className="RemixDetail-image" src={remixDetailedInfo.imageUrl} alt={`Picture of ${remixDetailedInfo.name}`}></img>
       <h1 className="RemixDetail-name">{remixDetailedInfo.name}</h1>
       <h2 className="RemixDetail-description">{remixDetailedInfo.description}</h2>
-      <p className="RemixDetail-original-recipe">Remix of 
-        <Link className="RemixDetail-original-recipe-link font-weight-bold" to={`/recipes/${remixDetailedInfo.originalRecipeId}`}>
+      <p className="RemixDetail-original-recipe">Remix of <Link className="RemixDetail-original-recipe-link font-weight-bold" to={`/recipes/${remixDetailedInfo.originalRecipeId}`}>
           {remixDetailedInfo.originalRecipe}
         </Link>
       </p>
