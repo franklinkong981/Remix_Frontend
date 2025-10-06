@@ -132,6 +132,14 @@ class RemixApi {
     let res = await this.request(`recipes/${recipeId}/remixes`);
     return res.remixes;
   }
+
+  /** Returns information about all remix reviews of a specific remix with the id remixId. For each remix review, returns the
+   * review id, username of user who created this review (reviewAuthor), title of the review, content, and date/time the review was created.
+   */
+  static async getAllRemixReviews(remixId) {
+    let res = await this.request(`remixes/${remixId}/reviews`);
+    return res.remixReviews;
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.

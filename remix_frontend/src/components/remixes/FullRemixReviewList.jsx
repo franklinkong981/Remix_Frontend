@@ -2,29 +2,29 @@ import React, {useState, useEffect} from "react";
 
 import {useParams, useLocation, Link} from "react-router-dom";
 
-import RecipeReviewList from "./RecipeReviewList.jsx";
+import RemixReviewList from "./RemixReviewList.jsx";
 import RemixApi from "../../api/api.js";
 
 //import {v4 as uuidv4} from "uuid";
 
 /**
- * Top-level component for the page that shows the full list of recipe reviews belonging to a specific recipe.
- * When page loads, loads the list of recipe reviews belonging to the recipe and displays them.
+ * Top-level component for the page that shows the full list of remix reviews belonging to a specific remix.
+ * When page loads, loads the list of remix reviews belonging to the remix and displays them.
  * 
- * Route: /recipes/:recipeId/reviews
+ * Route: /remixes/:remixId/reviews
  * 
- * Contains RecipeReviewList component.
+ * Contains RemixReviewList component.
  */
-function FullRecipeReviewList() {
+function FullRemixReviewList() {
   const params = useParams();
   const location = useLocation();
-  //locationRecipe = state passed in from the /recipes/:recipeId aka recipe details page route, contains {recipeId, recipeName}
+  //locationRemix = state passed in from the /remixes/:remixId aka remix details page route, contains {remixId, remixName}
   const locationRecipe = location.state;
-  const [listOfRecipeReviews, setListOfRecipeReviews] = useState(null);
+  const [listOfRemixReviews, setListOfRemixReviews] = useState(null);
 
-  // Retrieve recipe's reviews data from database. While this is happening,
+  // Retrieve remix's reviews data from database. While this is happening,
   // the "loading" text appears on the page.
-  // After the recipe review list is retrieved, displays them each as a RecipeReview component in a RecipeReviewList component.
+  // After the remix review list is retrieved, displays them each as a RemixReview component in a RemixReviewList component.
   useEffect(function loadRecipeReviewsWhenMounted() {
     async function fetchRecipeReviews() {
       const allRecipeReviews = await RemixApi.getAllRecipeReviews(params.recipeId);
@@ -52,4 +52,4 @@ function FullRecipeReviewList() {
   );
 }
 
-export default FullRecipeReviewList;
+export default FullRemixReviewList;
