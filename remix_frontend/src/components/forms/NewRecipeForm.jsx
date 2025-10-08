@@ -5,6 +5,7 @@ import Alert from "../reusables/Alert.jsx";
 
 /** Form to add a new recipe, used by logged in user. Users provide the name, a short description of the recipe, ingredients, directions,
  * and optional data such as estimated cooking time, servings, and a URL for the image to be displayed on the recipe details page.
+ * 
  * Top level component of the route /recipes/new.
  * 
  * This component shows the form and manages the update to form fields as user types in data.
