@@ -52,59 +52,109 @@ function NewRecipeForm({addRecipeFunc}) {
   }
 
   return (
-    <div className="SignupForm">
+    <div className="NewRecipeForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-        <h2 className="mb-3">To Get Started, Please Create an Account Below</h2>
+        <h2 className="mb-3">Create a New Recipe Below.</h2>
         <div className="card">
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="SignUpForm-username-field">Choose a username (5-30 characters)</label>
+                <label htmlFor="NewRecipeForm-name-field">Name of recipe (1-100 characters)</label>
                 <input
-                    id="SignUpForm-username-field"
+                    id="NewRecipeForm-name-field"
                     type="text"
-                    name="username"
+                    name="name"
                     className="form-control"
-                    value={signUpFormData.username}
+                    value={newRecipeFormData.name}
                     onChange={handleChange}
                     required
                 />
               </div>
 
               <div className="form-group">
-                <label>Email (must be a valid email)</label>
+                <label htmlFor="NewRecipeForm-description-field">Description (1-255 characters)</label>
                 <input
-                    id="SignUpForm-email-field"
-                    type="email"
-                    name="email"
+                    id="NewRecipeForm-description-field"
+                    type="text"
+                    name="description"
                     className="form-control"
-                    value={signUpFormData.email}
+                    value={newRecipeFormData.description}
                     onChange={handleChange}
                     required
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="SignUpForm-password-field">Choose a password (at least 8 characters long)</label>
+                <label htmlFor="NewRecipeForm-ingredients-field">Ingredients (required)</label>
                 <input
-                    id="SignUpForm-password-field"
-                    type="password"
-                    name="password"
+                    id="NewRecipeForm-ingredients-field"
+                    type="text"
+                    name="ingredients"
                     className="form-control"
-                    value={signUpFormData.password}
+                    value={newRecipeFormData.ingredients}
                     onChange={handleChange}
                     required
                 />
               </div>
 
-              {signUpFormErrors.length ? <Alert alertTexts={signUpFormErrors} /> : null}
+              <div className="form-group">
+                <label htmlFor="NewRecipeForm-directions-field">Directions (required)</label>
+                <input
+                    id="NewRecipeForm-directions-field"
+                    type="text"
+                    name="directions"
+                    className="form-control"
+                    value={newRecipeFormData.directions}
+                    onChange={handleChange}
+                    required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="NewRecipeForm-cooking-time-field">Estimated cooking time (leave 0 if blank) </label>
+                <input
+                    id="NewRecipeForm-cooking-time-field"
+                    type="number"
+                    min="0"
+                    name="cookingTime"
+                    className="form-control"
+                    value={newRecipeFormData.cookingTime}
+                    onChange={handleChange}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="NewRecipeForm-servings-field">Servings (leave 0 if blank) </label>
+                <input
+                    id="NewRecipeForm-servings-field"
+                    type="number"
+                    min="0"
+                    name="servings"
+                    className="form-control"
+                    value={newRecipeFormData.servings}
+                    onChange={handleChange}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="NewRecipeForm-imageurl-field">Image URL (optional) </label>
+                <input
+                    id="NewRecipeForm-imageurl-field"
+                    type="text"
+                    name="imageUrl"
+                    className="form-control"
+                    value={newRecipeFormData.imageUrl}
+                    onChange={handleChange}
+                />
+              </div>
+
+              {newRecipeFormErrors.length ? <Alert alertTexts={newRecipeFormErrors} /> : null}
 
               <button type="submit" className="btn btn-primary float-right" onSubmit={handleSubmit}>
-                Create Account
+                Add Recipe
               </button>
             </form>
-            <p>If your account creation is successful, you'll be redirected to the login page to sign in with your new username and password.</p>
-            <p>Already have an account? <Link to="/login">Log in now!</Link></p>
+            <p>If the new recipe is successfully created, you'll be redirected to a page containing its details.</p>
           </div>
         </div>
       </div>
