@@ -29,8 +29,11 @@ function Homepage() {
           <h1 className="Homepage-logged-in-title mb-4 font-weight-bold">Welcome back {currentUserInfo.username}!</h1>
           <p className="Homepage-logged-in-subtitle lead">See your recipes, remixes, and reviews below.</p>
           <div className="Homepage-logged-in-links">
-            <Link className="Homepage-logged-in-remixes-link btn btn-secondary font-weight-bold mr-3" to={`/recipes`}>
+            <Link className="Homepage-logged-in-search-link btn btn-secondary font-weight-bold mr-3" to={`/recipes`}>
               Search Recipes
+            </Link>
+            <Link className="Homepage-logged-in-add-recipes-link btn btn-secondary font-weight-bold mr-3" to={`/recipes/new`}>
+              Add New Recipe
             </Link>
           </div>
           <hr />
