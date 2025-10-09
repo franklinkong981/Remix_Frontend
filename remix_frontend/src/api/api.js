@@ -149,9 +149,12 @@ class RemixApi {
     return res.remixReviews;
   }
 
+  /** Attempts to add a new recipe to the backend database. If it is successful, returns the id of the new recipe that was added
+   *  as well as a success message.
+   */
   static async addNewRecipe(newRecipeFormValues) {
     let res = await this.request(`recipes`, newRecipeFormValues, "post");
-    return res.message;
+    return {newRecipeId: res.newRecipe.id, message: res.message};
   }
 }
 
