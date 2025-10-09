@@ -76,17 +76,18 @@ function NewRecipeForm({addRecipeFunc}) {
 
               <div className="form-group">
                 <label htmlFor="NewRecipeForm-description-field">Description (1-255 characters)</label>
-                <input
+                <textarea
                     id="NewRecipeForm-description-field"
-                    type="text"
                     name="description"
                     className="form-control"
                     value={newRecipeFormData.description}
+                    rows="3"
+                    cols="50"
                     minlength="1"
                     maxlength="255"
                     onChange={handleChange}
                     required
-                />
+                ></textarea>
               </div>
 
               <div className="form-group">
@@ -101,7 +102,7 @@ function NewRecipeForm({addRecipeFunc}) {
                     onChange={handleChange}
                     placeholder="Please provide a comma-separated list of ingredients needed for your recipe."
                     required
-                />
+                ></textarea>
               </div>
 
               <div className="form-group">
@@ -111,7 +112,7 @@ function NewRecipeForm({addRecipeFunc}) {
                     name="directions"
                     className="form-control"
                     value={newRecipeFormData.directions}
-                    rows="10"
+                    rows="20"
                     cols="50"
                     onChange={handleChange}
                     placeholder="Please provide the directions in paragraph form."
@@ -121,7 +122,7 @@ function NewRecipeForm({addRecipeFunc}) {
 
               <div className="form-group">
                 <label htmlFor="NewRecipeForm-cooking-time-field">Estimated cooking time (leave 0 if blank) </label>
-                <textarea
+                <input
                     id="NewRecipeForm-cooking-time-field"
                     type="number"
                     min="0"
@@ -129,7 +130,7 @@ function NewRecipeForm({addRecipeFunc}) {
                     className="form-control"
                     value={newRecipeFormData.cookingTime}
                     onChange={handleChange}
-                ></textarea>
+                />
               </div>
 
               <div className="form-group">
