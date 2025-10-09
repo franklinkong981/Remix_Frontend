@@ -102,13 +102,18 @@ function App() {
   };
 
   /**
-   * Is triggered by the user submitting the form to add a new recipe. Calls the RemixAPI with
+   * Is triggered by the user submitting the form to add a new recipe. Processes the form values, then calls the RemixAPI with
    * the processed form data, which sends a request to the backend to add the new recipe to the database.
    * If successful, will return an object containing the id of the newly created recipe that was added to the database.
    */
   const addNewRecipe = async (newRecipeFormValues) => {
     try {
       console.log(newRecipeFormValues);
+
+      //by definition, values for Number inputs in HTML forms are still strings, so must convert them to numbers first.
+      const {cookingTime, servings} = newRecipeFormValues;
+      newRecipeFormValues.cookingTime = Number(cookingTime);
+      newRecipeFormValues.servings = Number(servings);
 
       let newRecipeIdObject = await RemixApi.addNewRecipe(newRecipeFormValues);
       return {successful: true, newRecipeId: newRecipeIdObject.newRecipeId};
