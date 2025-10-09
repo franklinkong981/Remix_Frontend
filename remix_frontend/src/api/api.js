@@ -154,7 +154,7 @@ class RemixApi {
    */
   static async addNewRecipe(newRecipeFormValues) {
     let res = await this.request(`recipes`, newRecipeFormValues, "post");
-    return {newRecipeId: res.newRecipe.id, message: res.message};
+    return {newRecipeId: res.newRecipe.id};
   }
 }
 

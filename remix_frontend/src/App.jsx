@@ -101,6 +101,23 @@ function App() {
     setUserToken(userToken => null);
   };
 
+  /**
+   * Is triggered by the user submitting the form to add a new recipe. Calls the RemixAPI with
+   * the processed form data, which sends a request to the backend to add the new recipe to the database.
+   * If successful, will return an object containing the id of the newly created recipe that was added to the database.
+   */
+  const addNewRecipe = async (newRecipeFormValues) => {
+    try {
+      console.log(newRecipeFormValues);
+
+      let newRecipeIdObject = await RemixApi.addNewRecipe(newRecipeFormValues);
+      return {successful: true, newRecipeId: newRecipeIdObject.newRecipeId};
+    } catch(errors) {
+      console.error("Failed to add a new recipe", errors);
+      return {successful: false, errors};
+    }
+  };
+
   //When the page is first loaded, "Loading" will be displayed while the currently logged in user (if applicable)'s information is being fetched.
   if (!userInfoLoaded) return (
     <div className="App">
@@ -112,7 +129,7 @@ function App() {
     <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo, userToken, setUserToken}}>
       <div className="App">
         <RemixNavbar logOutFunc={logoutUser} />
-        <RemixRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} />
+        <RemixRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} addRecipeFunc={addNewRecipe} />
       </div>
     </CurrentUserContext.Provider>
   );

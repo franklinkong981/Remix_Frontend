@@ -32,7 +32,7 @@ import NewRecipeForm from "../forms/NewRecipeForm.jsx";
  * 
  * Visitng a non-existent route redirects to the homepage.
  */
-function RemixRoutes({signUpFunc, loginFunc}) {
+function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc}) {
   return (
     <div className="Routes pt-5">
       <Routes>
@@ -77,7 +77,7 @@ function RemixRoutes({signUpFunc, loginFunc}) {
         </ProtectedRoute>} />
 
         <Route path="/recipes/new" element={<ProtectedRoute>
-          <NewRecipeForm />
+          <NewRecipeForm addRecipeFunc={addRecipeFunc} />
         </ProtectedRoute>} />
 
         <Route exact path="/" element={<Homepage />} />
