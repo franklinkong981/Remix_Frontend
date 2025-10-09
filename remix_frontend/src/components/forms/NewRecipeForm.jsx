@@ -29,7 +29,7 @@ function NewRecipeForm({addRecipeFunc}) {
     servings: 0,
     imageUrl: ""
   });
-  const [NewRecipeFormErrors, setNewRecipeFormErrors] = useState([]);
+  const [newRecipeFormErrors, setNewRecipeFormErrors] = useState([]);
 
   /**
    * Handles form submission. Calls the function addRecipeFunc prop, which should contain
@@ -67,6 +67,8 @@ function NewRecipeForm({addRecipeFunc}) {
                     name="name"
                     className="form-control"
                     value={newRecipeFormData.name}
+                    minlength="1"
+                    maxlength="100"
                     onChange={handleChange}
                     required
                 />
@@ -80,6 +82,8 @@ function NewRecipeForm({addRecipeFunc}) {
                     name="description"
                     className="form-control"
                     value={newRecipeFormData.description}
+                    minlength="1"
+                    maxlength="255"
                     onChange={handleChange}
                     required
                 />
@@ -87,33 +91,37 @@ function NewRecipeForm({addRecipeFunc}) {
 
               <div className="form-group">
                 <label htmlFor="NewRecipeForm-ingredients-field">Ingredients (required)</label>
-                <input
+                <textarea
                     id="NewRecipeForm-ingredients-field"
-                    type="text"
                     name="ingredients"
                     className="form-control"
                     value={newRecipeFormData.ingredients}
+                    rows="5"
+                    cols="50"
                     onChange={handleChange}
+                    placeholder="Please provide a comma-separated list of ingredients needed for your recipe."
                     required
                 />
               </div>
 
               <div className="form-group">
                 <label htmlFor="NewRecipeForm-directions-field">Directions (required)</label>
-                <input
+                <textarea
                     id="NewRecipeForm-directions-field"
-                    type="text"
                     name="directions"
                     className="form-control"
                     value={newRecipeFormData.directions}
+                    rows="10"
+                    cols="50"
                     onChange={handleChange}
+                    placeholder="Please provide the directions in paragraph form."
                     required
-                />
+                ></textarea>
               </div>
 
               <div className="form-group">
                 <label htmlFor="NewRecipeForm-cooking-time-field">Estimated cooking time (leave 0 if blank) </label>
-                <input
+                <textarea
                     id="NewRecipeForm-cooking-time-field"
                     type="number"
                     min="0"
@@ -121,7 +129,7 @@ function NewRecipeForm({addRecipeFunc}) {
                     className="form-control"
                     value={newRecipeFormData.cookingTime}
                     onChange={handleChange}
-                />
+                ></textarea>
               </div>
 
               <div className="form-group">
