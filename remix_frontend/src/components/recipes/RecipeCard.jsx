@@ -9,7 +9,7 @@ import "./RecipeCard.css";
  * 
  * Rendered by RecipeList component to show a card for each recipe.
  */
-function RecipeCard({id, name, description, imageUrl, createdAt}) {
+function RecipeCard({id, name, description, recipeAuthor="", imageUrl, createdAt}) {
 
   return (
     <section className="RecipeCard card">
@@ -21,6 +21,7 @@ function RecipeCard({id, name, description, imageUrl, createdAt}) {
           </Link>
         </h3>
         <p className="RecipeCard-description">{description}</p>
+        {recipeAuthor && <p className="RecipeCard-author">Created by {recipeAuthor}</p>}
         <p className="RecipeCard-createdAt">Created on {createdAt}</p>
       </div>
     </section>

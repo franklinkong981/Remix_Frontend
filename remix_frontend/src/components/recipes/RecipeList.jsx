@@ -23,6 +23,7 @@ function RecipeList({recipes}) {
               id={recipe.id} 
               name={recipe.name} 
               description={recipe.description}
+              recipeAuthor={recipe.recipeAuthor || ""}
               imageUrl={recipe.imageUrl}
               createdAt={recipe.createdAt}
             />
