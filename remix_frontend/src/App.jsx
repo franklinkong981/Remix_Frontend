@@ -145,6 +145,31 @@ function App() {
     }
   };
 
+  /**
+   * Is triggered by the user submitting the form to add a new remix. Processes the form values, adds in the original recipe id, 
+   * then calls the RemixAPI with the processed form data, which sends a request to the backend to add the new remix to the database.
+   * If successful, will return an object containing the id of the newly created remix that was added to the database.
+   */
+  const addNewRemix = async (originalRecipeId, newRemixFormValues) => {
+    try {
+      console.log(newRemixFormValues);
+
+      //by definition, values for Number inputs in HTML forms are still strings, so must convert them to numbers first.
+      const {cookingTime, servings} = newRemixFormValues;
+      newRemixFormValues.cookingTime = Number(cookingTime);
+      newRemixFormValues.servings = Number(servings);
+
+      //add in the originalRecipeId to the newRemixFormValues, since that is required in the body.
+      newRemixFormValues.originalRecipeId = Number(originalRecipeId);
+
+      let newRemixIdObject = await RemixApi.addNewRemix(newRemixFormValues);
+      return {successful: true, newRemixId: newRemixIdObject.newRemixId};
+    } catch(errors) {
+      console.error("Failed to add a new remix", errors);
+      return {successful: false, errors};
+    }
+  };
+
   //When the page is first loaded, "Loading" will be displayed while the currently logged in user (if applicable)'s information is being fetched.
   if (!userInfoLoaded) return (
     <div className="App">
@@ -156,7 +181,8 @@ function App() {
     <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo, userToken, setUserToken}}>
       <div className="App">
         <RemixNavbar logOutFunc={logoutUser} />
-        <RemixRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} addRecipeFunc={addNewRecipe} editRecipeFunc={editRecipe}/>
+        <RemixRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} addRecipeFunc={addNewRecipe} editRecipeFunc={editRecipe}
+                     addRemixFunc={addNewRemix} />
       </div>
     </CurrentUserContext.Provider>
   );
