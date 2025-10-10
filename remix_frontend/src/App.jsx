@@ -128,7 +128,7 @@ function App() {
    * the processed form data, which sends a request to the backend to edit the recipe in the database.
    * If successful, will return an object containing the id of the updated recipe.
    */
-  const editNewRecipe = async (recipeId, editRecipeFormValues) => {
+  const editRecipe = async (recipeId, editRecipeFormValues) => {
     try {
       console.log(editRecipeFormValues);
 
@@ -156,7 +156,7 @@ function App() {
     <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo, userToken, setUserToken}}>
       <div className="App">
         <RemixNavbar logOutFunc={logoutUser} />
-        <RemixRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} addRecipeFunc={addNewRecipe} />
+        <RemixRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} addRecipeFunc={addNewRecipe} editRecipeFunc={editRecipe}/>
       </div>
     </CurrentUserContext.Provider>
   );
