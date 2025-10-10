@@ -29,7 +29,13 @@ function RecipeRemixesPreview({recipeId, recipeName, remixes}) {
             See All Remixes for this Recipe
           </Link>
         </>
-      ) : <p className="RecipeRemixesPreview-no-remixes">This recipe currently does not have any remix reviews.</p>}
+      ) : <p className="RecipeRemixesPreview-no-remixes">This recipe currently does not have any remix reviews. Be the first to add one!</p>}
+      <Link className="RecipeRemixesPreview-add-remix btn btn-secondary font-weight-bold mr-3" 
+            to={`/recipes/${recipeId}/remixes/new`}
+            state={{recipeName}}
+      >
+        Add New Remix
+      </Link>
       <hr />
     </div>
   );
