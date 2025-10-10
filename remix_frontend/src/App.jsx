@@ -123,6 +123,28 @@ function App() {
     }
   };
 
+  /**
+   * Is triggered by the user submitting the form to edit an existing recipe. Processes the form values, then calls the RemixAPI with
+   * the processed form data, which sends a request to the backend to edit the recipe in the database.
+   * If successful, will return an object containing the id of the updated recipe.
+   */
+  const editNewRecipe = async (recipeId, editRecipeFormValues) => {
+    try {
+      console.log(editRecipeFormValues);
+
+      //by definition, values for Number inputs in HTML forms are still strings, so must convert them to numbers first.
+      const {cookingTime, servings} = editRecipeFormValues;
+      editRecipeFormValues.cookingTime = Number(cookingTime);
+      editRecipeFormValues.servings = Number(servings);
+
+      let editRecipeIdObject = await RemixApi.editRecipe(recipeId, editRecipeFormValues);
+      return {successful: true, updatedRecipeId: editRecipeIdObject.updatedRecipeId};
+    } catch(errors) {
+      console.error(`Failed to update the recipe with id ${recipeId}`, errors);
+      return {successful: false, errors};
+    }
+  };
+
   //When the page is first loaded, "Loading" will be displayed while the currently logged in user (if applicable)'s information is being fetched.
   if (!userInfoLoaded) return (
     <div className="App">
