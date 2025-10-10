@@ -1,5 +1,7 @@
-import React, {useState} from "react";
-import {useNavigate, useLocation, Link} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {useNavigate, useParams, useLocation, Link} from "react-router-dom";
+
+import RemixApi from "../../api/api.js";
 
 import Alert from "../reusables/Alert.jsx";
 
@@ -71,6 +73,8 @@ function NewRemixForm({addRemixFunc}) {
     setNewRemixFormData(newRemixFormData => ({...newRemixFormData, [name]: value}));
   }
 
+  if (!(Object.keys(newRemixFormData).length)) return <h1>Loading...</h1>
+
   return (
     <div className="NewRemixForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
@@ -116,17 +120,18 @@ function NewRemixForm({addRemixFunc}) {
 
               <div className="form-group">
                 <label htmlFor="NewRemixForm-purpose-field">Purpose of remix (10-255 characters)</label>
-                <input
-                    id="NewRemixForm-name-field"
-                    type="text"
-                    name="name"
+                <textarea
+                    id="NewRemixForm-purpose-field"
+                    name="purpose"
                     className="form-control"
                     value={newRemixFormData.purpose}
+                    rows="5"
+                    cols="50"
                     minlength="10"
-                    maxlength="255"
+                    maxlength="255"  
                     onChange={handleChange}
                     required
-                />
+                ></textarea>
               </div>
 
               <div className="form-group">

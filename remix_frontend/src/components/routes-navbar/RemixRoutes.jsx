@@ -24,7 +24,7 @@ import FullRemixReviewList from "../remixes/FullRemixReviewList.jsx";
 
 import NewRecipeForm from "../forms/NewRecipeForm.jsx";
 import EditRecipeForm from "../forms/EditRecipeForm.jsx";
-import AddRemixForm from "../forms/AddRemixForm.jsx";
+import NewRemixForm from "../forms/NewRemixForm.jsx";
 
 /**
  * The component for site-wide routes rendered by the App component.
@@ -84,8 +84,8 @@ function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc, editRecipeFunc, addR
         <Route path="/recipes/:recipeId/edit" element={<ProtectedRoute>
           <EditRecipeForm editRecipeFunc={editRecipeFunc} />
         </ProtectedRoute>} />
-        <Route path="/recipes/:recipeId/remixes/add" element={<ProtectedRoute>
-          <AddRemixForm addRemixFunc={addRemixFunc} />
+        <Route path="/recipes/:recipeId/remixes/new" element={<ProtectedRoute>
+          <NewRemixForm addRemixFunc={addRemixFunc} />
         </ProtectedRoute>} />
 
         <Route exact path="/" element={<Homepage />} />
