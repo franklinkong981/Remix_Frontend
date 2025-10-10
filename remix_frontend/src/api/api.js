@@ -149,12 +149,19 @@ class RemixApi {
     return res.remixReviews;
   }
 
-  /** Attempts to add a new recipe to the backend database. If it is successful, returns the id of the new recipe that was added
-   *  as well as a success message.
+  /** Attempts to add a new recipe to the backend database. If it is successful, returns the id of the new recipe that was added.
    */
   static async addNewRecipe(newRecipeFormValues) {
     let res = await this.request(`recipes`, newRecipeFormValues, "post");
     return {newRecipeId: res.newRecipe.id};
+  }
+
+  /** Attempts to update a recipe with the id of recipeId to the backend database using the object editReceipFormValues. 
+   *  If it is successful, returns the id of the updated recipe.
+   */
+  static async editRecipe(recipeId, editRecipeFormValues) {
+    let res = await this.request(`recipes/${recipeId}`, editRecipeFormValues, "patch");
+    return {updatedRecipeId: res.updatedRecipe.id};
   }
 }
 
