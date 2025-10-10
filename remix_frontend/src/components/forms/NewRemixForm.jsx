@@ -24,8 +24,8 @@ function NewRemixForm({addRemixFunc}) {
 
   //Initially, the form data will be blank. Only after the existing data of the current recipe is fetched from the backend
   // will the form load. The fields will be prefilled with the original recipe's existing information.
-  const [addRemixFormData, setAddRemixFormData] = useState({});
-  const [addRemixFormErrors, setAddRemixFormErrors] = useState([]);
+  const [newRemixFormData, setNewRemixFormData] = useState({});
+  const [newRemixFormErrors, setNewRemixFormErrors] = useState([]);
 
   //retrieve detailed info about the original recipe.
   // While this is happening, the word "Loading" is displayed on the screen. The form won't be displayed 
@@ -33,7 +33,7 @@ function NewRemixForm({addRemixFunc}) {
   useEffect(function loadRecipeDetailsWhenMounted() {
     async function fetchRecipeDetails() {
       const originalRecipeInfo = await RemixApi.getRecipeDetails(recipeId);
-      setAddRemixFormData({
+      setNewRemixFormData({
         name: originalRecipeInfo.name,
         description: originalRecipeInfo.description,
         purpose: "",
@@ -55,7 +55,7 @@ function NewRemixForm({addRemixFunc}) {
    */
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let addRemixResult = await addRecipeFunc(recipeId, addRemixFormData);
+    let addRemixResult = await addRemixFunc(recipeId, newRemixFormData);
     if (addRemixResult.successful) {
       navigate(`/remixes/${addRemixResult.newRemixId}`);
     } else {
