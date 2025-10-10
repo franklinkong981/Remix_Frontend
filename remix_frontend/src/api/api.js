@@ -163,6 +163,14 @@ class RemixApi {
     let res = await this.request(`recipes/${recipeId}`, editRecipeFormValues, "patch");
     return {updatedRecipeId: res.updatedRecipe.id};
   }
+
+  /** Attempts to update a recipe with the id of recipeId to the backend database using the object editReceipFormValues. 
+   *  If it is successful, returns the id of the updated recipe.
+   */
+  static async addNewRemix(newRemixFormValues) {
+    let res = await this.request(`remixes`, newRemixFormValues, "post");
+    return {newRemixId: res.newRemix.id};
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.
