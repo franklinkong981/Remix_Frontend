@@ -1,5 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useNavigate, useParams, Link} from "react-router-dom";
+
+import RemixApi from "../../api/api.js";
 
 import Alert from "../reusables/Alert.jsx";
 
@@ -65,7 +67,7 @@ function EditRecipeForm({editRecipeFunc}) {
     setEditRecipeFormData(editRecipeFormData => ({...editRecipeFormData, [name]: value}));
   }
 
-  if (!editRecipeFormData) return <h1>Loading...</h1>
+  if (!(Object.keys(editRecipeFormData).length)) return <h1>Loading...</h1>
 
   return (
     <div className="EditRecipeForm">
