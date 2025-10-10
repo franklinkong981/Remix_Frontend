@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useNavigate, Link} from "react-router-dom";
+import {useNavigate, useLocation, Link} from "react-router-dom";
 
 import Alert from "../reusables/Alert.jsx";
 
@@ -21,6 +21,9 @@ import Alert from "../reusables/Alert.jsx";
 function NewRemixForm({addRemixFunc}) {
   const navigate = useNavigate();
   const {recipeId} = useParams();
+  const location = useLocation();
+  //locationRecipe = state passed in from the /recipes/:recipeId aka recipe details page route, contains {recipeName}
+  const locationRecipe = location.state;
 
   //Initially, the form data will be blank. Only after the existing data of the current recipe is fetched from the backend
   // will the form load. The fields will be prefilled with the original recipe's existing information.
@@ -71,7 +74,10 @@ function NewRemixForm({addRemixFunc}) {
   return (
     <div className="NewRemixForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-        <h2 className="mb-3">Create a New Remix Below.</h2>
+        <h2 className="mb-3">Create a New Remix Below For the Recipe <Link className="NewRemixForm-original-recipe-link" to={`/recipes/${recipeId}`}>
+            {locationRecipe.recipeName}
+          </Link>
+        </h2>
         <div className="card">
           <div className="card-body">
             <form onSubmit={handleSubmit}>
