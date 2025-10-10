@@ -52,7 +52,7 @@ function EditRecipeForm({editRecipeFunc}) {
    */
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let editRecipeResult = await editRecipeFunc(editRecipeFormData);
+    let editRecipeResult = await editRecipeFunc(recipeId, editRecipeFormData);
     if (editRecipeResult.successful) {
       navigate(`/recipes/${editRecipeResult.updatedRecipeId}`);
     } else {
@@ -70,7 +70,10 @@ function EditRecipeForm({editRecipeFunc}) {
   return (
     <div className="EditRecipeForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-        <h2 className="mb-3">Update the Recipe.</h2>
+        <h2 className="mb-3">Update the Recipe <Link className="EditRecipeForm-recipe-details-link" to={`/recipes/${recipeId}`}>
+            {editRecipeFormData.name}
+          </Link>
+        </h2>
         <div className="card">
           <div className="card-body">
             <form onSubmit={handleSubmit}>

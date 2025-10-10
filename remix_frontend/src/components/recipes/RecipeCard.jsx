@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import CurrentUserContext from "../../contexts/currentUserContext.jsx";
+
 import "./RecipeCard.css";
 
 /**
@@ -10,6 +12,7 @@ import "./RecipeCard.css";
  * Rendered by RecipeList component to show a card for each recipe.
  */
 function RecipeCard({id, name, description, recipeAuthor="", imageUrl, createdAt}) {
+  const {currentUserInfo} = useContext(CurrentUserContext);
 
   return (
     <section className="RecipeCard card">
@@ -23,6 +26,13 @@ function RecipeCard({id, name, description, recipeAuthor="", imageUrl, createdAt
         <p className="RecipeCard-description">{description}</p>
         {recipeAuthor && <p className="RecipeCard-author">Created by {recipeAuthor}</p>}
         <p className="RecipeCard-createdAt">Created on {createdAt}</p>
+        { (recipeAuthor && recipeAuthor == currentUserInfo.username) && <Link 
+            className="RecipeCard-update-link btn btn-secondary font-weight-bold mr-3" 
+            to={`/recipes/${id}/edit`}
+            >
+              Update Recipe
+            </Link>
+        }
       </div>
     </section>
   );
