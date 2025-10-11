@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import CurrentUserContext from "../../contexts/currentUserContext.jsx";
+
 import "./RemixCard.css";
 
 /**
@@ -14,6 +16,7 @@ import "./RemixCard.css";
  * it will contain the originalRecipe but not the remixAuthor.
  */
 function RemixCard({id, name, description, remixAuthor="", originalRecipe = "", imageUrl, createdAt}) {
+  const {currentUserInfo} = useContext(CurrentUserContext);
 
   return (
     <section className="RemixCard card">
@@ -28,6 +31,13 @@ function RemixCard({id, name, description, remixAuthor="", originalRecipe = "", 
         {originalRecipe && <p className="RemixCard-original-recipe">Remix of {originalRecipe}</p>}
         {remixAuthor && <p className="RemixCard-author">Created by {remixAuthor}</p>}
         <p className="RemixCard-createdAt">Created on {createdAt}</p>
+        { ((!remixAuthor) || remixAuthor == currentUserInfo.username) && <Link 
+          className="RemixCard-update-link btn btn-secondary font-weight-bold mr-3" 
+          to={`/remixes/${id}/edit`}
+          >
+            Update Remix
+          </Link>
+        }
       </div>
     </section>
   );
