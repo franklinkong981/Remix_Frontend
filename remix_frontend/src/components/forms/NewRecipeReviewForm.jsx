@@ -19,6 +19,9 @@ import Alert from "../reusables/Alert.jsx";
 function NewRecipeReviewForm({addRecipeReviewFunc}) {
   const navigate = useNavigate();
   const {recipeId} = useParams();
+  const location = useLocation();
+  //locationRecipe = state passed in from the /recipes/:recipeId aka recipe details page route, contains {recipeName}
+  const locationRecipe = location.state;
 
   const [newRecipeReviewFormData, setNewRecipeReviewFormData] = useState({
     title: "",
@@ -37,7 +40,10 @@ function NewRecipeReviewForm({addRecipeReviewFunc}) {
     evt.preventDefault();
     let addRecipeReviewResult = await addRecipeReviewFunc(newRecipeReviewFormData);
     if (addRecipeReviewResult.successful) {
-      navigate(`/recipes/${recipeId}/reviews/new`);
+      navigate({
+        pathname: `/recipes/${recipeId}/reviews/new`,
+        state: {recipeName: locationRecipe.recipeName}
+      });
     } else {
       setNewRecipeReviewFormErrors(addRecipeReviewResult.errors);
     }
@@ -51,7 +57,10 @@ function NewRecipeReviewForm({addRecipeReviewFunc}) {
   return (
     <div className="NewRecipeReviewForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-        <h2 className="mb-3">Create a New Recipe Review Below.</h2>
+        <h2 className="mb-3">Add a New Review for the Recipe <Link className="NewRecipeReviewForm-recipe-details-link" to={`/recipes/${recipeId}`}>
+            {locationRecipe.recipeName}
+          </Link>
+        </h2>
         <div className="card">
           <div className="card-body">
             <form onSubmit={handleSubmit}>

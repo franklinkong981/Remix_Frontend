@@ -33,7 +33,13 @@ function RecipeReviewsPreview({recipeId, recipeName, recipeReview}) {
             See All Reviews for this Recipe
           </Link>
         </>
-      ) : <p className="RecipeReviewsPreview-no-recipes">This recipe currently does not have any recipe reviews.</p>}
+      ) : <p className="RecipeReviewsPreview-no-recipes">This recipe currently does not have any recipe reviews. Be the first to add one!</p>}
+      <Link className="RecipeReviewsPreview-add-review btn btn-secondary font-weight-bold mr-3" 
+        to={`/recipes/${recipeId}/reviews/new`}
+        state={{recipeName}}
+      >
+        Add New Review
+      </Link>
       <hr />
     </div>
   );
