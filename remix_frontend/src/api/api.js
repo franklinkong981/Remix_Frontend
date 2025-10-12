@@ -183,7 +183,7 @@ class RemixApi {
   /** Attempts to add a new recipe review to the backend database. If it is successful, will simply return.
    */
   static async addNewRecipeReview(recipeId, newRecipeReviewFormValues) {
-    await this.request(`recipes/${rcipeId}/reviews`, newRecipeReviewFormValues, "post");
+    await this.request(`recipes/${recipeId}/reviews`, newRecipeReviewFormValues, "post");
   }
 }
 

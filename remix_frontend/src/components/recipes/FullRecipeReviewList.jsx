@@ -16,7 +16,7 @@ import RemixApi from "../../api/api.js";
  * Contains RecipeReviewList component.
  */
 function FullRecipeReviewList() {
-  const params = useParams();
+  const {recipeId} = useParams();
   const location = useLocation();
   //locationRecipe = state passed in from the /recipes/:recipeId aka recipe details page route, contains {recipeId, recipeName}
   const locationRecipe = location.state;
@@ -27,7 +27,7 @@ function FullRecipeReviewList() {
   // After the recipe review list is retrieved, displays them each as a RecipeReview component in a RecipeReviewList component.
   useEffect(function loadRecipeReviewsWhenMounted() {
     async function fetchRecipeReviews() {
-      const allRecipeReviews = await RemixApi.getAllRecipeReviews(params.recipeId);
+      const allRecipeReviews = await RemixApi.getAllRecipeReviews(recipeId);
       setListOfRecipeReviews(allRecipeReviews);
     }
     fetchRecipeReviews();
@@ -41,7 +41,7 @@ function FullRecipeReviewList() {
   return (
     <div className="FullRecipeReviewList">
       <h1 className="FullRecipeReviewList-header">
-        All Recipe Reviews for <Link className="FullRecipeReviewList-details-page-link" to={`/recipes/${locationRecipe.recipeId}`}>
+        All Recipe Reviews for <Link className="FullRecipeReviewList-details-page-link" to={`/recipes/${recipeId}`}>
           {locationRecipe.recipeName}
         </Link>
       </h1>

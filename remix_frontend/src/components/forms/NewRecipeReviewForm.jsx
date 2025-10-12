@@ -21,7 +21,7 @@ function NewRecipeReviewForm({addRecipeReviewFunc}) {
   const {recipeId} = useParams();
   const location = useLocation();
   //locationRecipe = state passed in from the /recipes/:recipeId aka recipe details page route, contains {recipeName}
-  const locationRecipe = location.state;
+  const {recipeName} = location.state;
 
   const [newRecipeReviewFormData, setNewRecipeReviewFormData] = useState({
     title: "",
@@ -38,12 +38,9 @@ function NewRecipeReviewForm({addRecipeReviewFunc}) {
    */
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let addRecipeReviewResult = await addRecipeReviewFunc(newRecipeReviewFormData);
+    let addRecipeReviewResult = await addRecipeReviewFunc(recipeId, newRecipeReviewFormData);
     if (addRecipeReviewResult.successful) {
-      navigate({
-        pathname: `/recipes/${recipeId}/reviews/new`,
-        state: {recipeName: locationRecipe.recipeName}
-      });
+      navigate(`/recipes/${recipeId}/reviews`, {state: {recipeName}});
     } else {
       setNewRecipeReviewFormErrors(addRecipeReviewResult.errors);
     }
@@ -58,7 +55,7 @@ function NewRecipeReviewForm({addRecipeReviewFunc}) {
     <div className="NewRecipeReviewForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
         <h2 className="mb-3">Add a New Review for the Recipe <Link className="NewRecipeReviewForm-recipe-details-link" to={`/recipes/${recipeId}`}>
-            {locationRecipe.recipeName}
+            {recipeName}
           </Link>
         </h2>
         <div className="card">

@@ -95,7 +95,7 @@ function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc, editRecipeFunc, addR
         </ProtectedRoute>} />
 
         <Route path="/recipes/:recipeId/reviews/new" element={<ProtectedRoute>
-          <NewRecipReviewForm addRecipeReviewFunc={addRecipeReviewFunc} />
+          <NewRecipeReviewForm addRecipeReviewFunc={addRecipeReviewFunc} />
         </ProtectedRoute>} />
 
         <Route exact path="/" element={<Homepage />} />
