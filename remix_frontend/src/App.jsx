@@ -197,11 +197,11 @@ function App() {
    * the processed form data, which sends a request to the backend to add the new recipe review to the database.
    * If successful, will simply return an object with the successful attribute set to true.
    */
-  const addNewRecipeReview = async (newRecipeReviewFormValues) => {
+  const addNewRecipeReview = async (recipeId, newRecipeReviewFormValues) => {
     try {
       console.log(newRecipeReviewFormValues);
 
-      await RemixApi.addNewRecipeReview(newRecipeReviewFormValues);
+      await RemixApi.addNewRecipeReview(recipeId, newRecipeReviewFormValues);
       return {successful: true};
     } catch(errors) {
       console.error("Failed to add a new recipe review", errors);
