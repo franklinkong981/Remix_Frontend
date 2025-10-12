@@ -35,7 +35,7 @@ import EditRemixForm from "../forms/EditRemixForm.jsx";
  * 
  * Visitng a non-existent route redirects to the homepage.
  */
-function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc, editRecipeFunc, addRemixFunc}) {
+function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc, editRecipeFunc, addRemixFunc, editRemixFunc}) {
   return (
     <div className="Routes pt-5">
       <Routes>

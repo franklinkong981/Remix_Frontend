@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/currentUserContext.jsx";
@@ -34,6 +34,7 @@ function RemixCard({id, name, description, remixAuthor="", originalRecipe = "", 
         { ((!remixAuthor) || remixAuthor == currentUserInfo.username) && <Link 
           className="RemixCard-update-link btn btn-secondary font-weight-bold mr-3" 
           to={`/remixes/${id}/edit`}
+          state={{name}}
           >
             Update Remix
           </Link>

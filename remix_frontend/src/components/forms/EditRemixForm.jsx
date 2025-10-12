@@ -24,7 +24,7 @@ function EditRemixForm({editRemixFunc}) {
   const navigate = useNavigate();
   const {remixId} = useParams();
   const location = useLocation();
-  //locationRemix = state passed in from the /remixes/:remixId aka remix details page route, contains {remixName}
+  //locationRemix = state passed in from the /remixes/:remixId aka remix details page route, contains {name}
   const locationRemix = location.state;
 
   //Initially, the form data will be blank. Only after the existing data of the current remix is fetched from the backend
@@ -41,7 +41,7 @@ function EditRemixForm({editRemixFunc}) {
       setEditRemixFormData({
         name: remixInfo.name,
         description: remixInfo.description,
-        purpose: "",
+        purpose: remixInfo.purpose,
         ingredients: remixInfo.ingredients,
         directions: remixInfo.directions,
         cookingTime: remixInfo.cookingTime,
@@ -79,7 +79,7 @@ function EditRemixForm({editRemixFunc}) {
     <div className="EditRemixForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
         <h2 className="mb-3">Update the Remix <Link className="EditRemixForm-remix-details-link" to={`/remixes/${remixId}`}>
-            {locationRemix.remixName}
+            {locationRemix.name}
           </Link>
         </h2>
         <div className="card">
