@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
+
+import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
 import "./RecipeReview.css";
 
@@ -8,7 +10,8 @@ import "./RecipeReview.css";
  * Name of the recipe will be a link to the recipe details page.
  * Rendered by the RecipeReviewList component.
  */
-function RecipeReview({reviewId=0, reviewAuthor="", recipeId=0, recipeName="", title, content, createdAt}) {
+function RecipeReview({reviewId, reviewAuthor="", recipeId, recipeName, title, content, createdAt}) {
+  const {currentUserInfo} = useContext(CurrentUserContext);
 
   return (
     <section className="RecipeReview card">
@@ -26,6 +29,14 @@ function RecipeReview({reviewId=0, reviewAuthor="", recipeId=0, recipeName="", t
         </h1>
         <p className="RecipeReview-content">{content}</p>
         <p className="RecipeReview-createdAt">Created on {createdAt}</p>
+        { ((!reviewAuthor) || reviewAuthor == currentUserInfo.username) && <Link 
+            className="RecipeReview-update-link btn btn-secondary font-weight-bold mr-3" 
+            to={`/recipes/reviews${reviewId}/edit`}
+            state={{recipeId, recipeName}}
+            >
+              Update Review
+            </Link>
+        }
       </div>
     </section>
   );
