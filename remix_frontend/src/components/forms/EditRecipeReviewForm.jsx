@@ -1,5 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useNavigate, useParams, useLocation, Link} from "react-router-dom";
+
+import RemixApi from "../../api/api.js";
 
 import Alert from "../reusables/Alert.jsx";
 

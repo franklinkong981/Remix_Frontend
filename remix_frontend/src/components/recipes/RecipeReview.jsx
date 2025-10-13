@@ -17,8 +17,7 @@ function RecipeReview({reviewId, reviewAuthor="", recipeId, recipeName, title, c
     <section className="RecipeReview card">
       <div className="RecipeReview-content card-body">
         {recipeName ? (
-          <p className="RecipeReview-recipe-name">Review of 
-            <Link className="RecipeReview-link font-weight-bold" to={`/recipes/${recipeId}`}>
+          <p className="RecipeReview-recipe-name">Review of <Link className="RecipeReview-link font-weight-bold" to={`/recipes/${recipeId}`}>
               {recipeName}
             </Link>
           </p>
@@ -31,7 +30,7 @@ function RecipeReview({reviewId, reviewAuthor="", recipeId, recipeName, title, c
         <p className="RecipeReview-createdAt">Created on {createdAt}</p>
         { ((!reviewAuthor) || reviewAuthor == currentUserInfo.username) && <Link 
             className="RecipeReview-update-link btn btn-secondary font-weight-bold mr-3" 
-            to={`/recipes/reviews${reviewId}/edit`}
+            to={`/recipes/reviews/${reviewId}/edit`}
             state={{recipeId, recipeName}}
             >
               Update Review
