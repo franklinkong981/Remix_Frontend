@@ -16,7 +16,7 @@ import RemixApi from "../../api/api.js";
  * Contains RemixReviewList component.
  */
 function FullRemixReviewList() {
-  const params = useParams();
+  const {remixId} = useParams();
   const location = useLocation();
   //locationRemix = state passed in from the /remixes/:remixId aka remix details page route, contains {remixId, remixName}
   const locationRemix = location.state;
@@ -27,7 +27,7 @@ function FullRemixReviewList() {
   // After the remix review list is retrieved, displays them each as a RemixReview component in a RemixReviewList component.
   useEffect(function loadRemixReviewsWhenMounted() {
     async function fetchRemixReviews() {
-      const allRemixReviews = await RemixApi.getAllRemixReviews(params.remixId);
+      const allRemixReviews = await RemixApi.getAllRemixReviews(remixId);
       setListOfRemixReviews(allRemixReviews);
     }
     fetchRemixReviews();
@@ -41,7 +41,7 @@ function FullRemixReviewList() {
   return (
     <div className="FullRemixReviewList">
       <h1 className="FullRemixReviewList-header">
-        All Remix Reviews for <Link className="FullRemixReviewList-details-page-link" to={`/remixes/${locationRemix.remixId}`}>
+        All Remix Reviews for <Link className="FullRemixReviewList-details-page-link" to={`/remixes/${remixId}`}>
           {locationRemix.remixName}
         </Link>
       </h1>
