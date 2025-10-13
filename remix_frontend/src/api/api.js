@@ -207,6 +207,14 @@ class RemixApi {
     await this.request(`remixes/${remixId}/reviews`, newRemixReviewFormValues, "post");
   }
 
+  /** Attempts to fetch the remix review with id of reviewId from the backend database.
+   *  If successful, returns information about the specific remix review, including its title and content.
+   */
+  static async getRemixReview(reviewId) {
+    let res = await this.request(`remixes/reviews/${reviewId}`);
+    return res.remixReview;
+  }
+
   /** Attempts to update a remix review with the id of reviewId to the backend database using the object editRemixReviewFormValues. 
    *  If it is successful, simply returns.
    */

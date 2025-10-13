@@ -20,7 +20,7 @@ function RemixReviewList({remixReviews}) {
           {remixReviews.map(remixReview => (
             <RemixReview key={uuidv4()}
               reviewId={remixReview.id}
-              reviewAuthor={recipeReview.reviewAuthor || ""} 
+              reviewAuthor={remixReview.reviewAuthor || ""} 
               remixId={remixReview.remixId} 
               remixName={remixReview.remixName}
               title={remixReview.title}

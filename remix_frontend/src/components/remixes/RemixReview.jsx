@@ -1,6 +1,8 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 
+import CurrentUserContext from "../../contexts/currentUserContext.jsx";
+
 import "./RemixReview.css";
 
 /**
@@ -12,9 +14,9 @@ function RemixReview({reviewId, reviewAuthor="", remixId, remixName, title, cont
   const {currentUserInfo} = useContext(CurrentUserContext);
 
   return (
-    <section className="RemicReview card">
+    <section className="RemixReview card">
       <div className="RemixReview-content card-body">
-        {remicName ? (
+        {remixName ? (
           <p className="RemixReview-recipe-name">Review of <Link className="RemixReview-link font-weight-bold" to={`/remixes/${remixId}`}>
               {remixName}
             </Link>

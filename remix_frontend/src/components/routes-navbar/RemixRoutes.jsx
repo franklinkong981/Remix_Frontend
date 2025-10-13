@@ -106,7 +106,7 @@ function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc, editRecipeFunc, addR
         <Route path="/remixes/:remixId/reviews/new" element={<ProtectedRoute>
           <NewRemixReviewForm addRemixReviewFunc={addRemixReviewFunc} />
         </ProtectedRoute>} />
-        <Route path="/remixes/reviews/:remixId/edit" element={<ProtectedRoute>
+        <Route path="/remixes/reviews/:reviewId/edit" element={<ProtectedRoute>
           <EditRemixReviewForm editRemixReviewFunc={editRemixReviewFunc} />
         </ProtectedRoute>} />
 
