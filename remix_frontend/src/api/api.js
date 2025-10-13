@@ -200,6 +200,12 @@ class RemixApi {
   static async editRecipeReview(reviewId, editRecipeReviewFormValues) {
     await this.request(`recipes/reviews/${reviewId}`, editRecipeReviewFormValues, "patch");
   }
+
+  /** Attempts to add a new remix review to the backend database. If it is successful, will simply return.
+   */
+  static async addNewRemixReview(remixId, newRemixReviewFormValues) {
+    await this.request(`remixes/${remixId}/reviews`, newRemixReviewFormValues, "post");
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.

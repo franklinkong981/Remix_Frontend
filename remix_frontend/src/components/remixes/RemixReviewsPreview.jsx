@@ -33,7 +33,13 @@ function RemixReviewsPreview({remixId, remixName, remixReview}) {
             See All Reviews for this Remix
           </Link>
         </>
-      ) : <p className="RecipeReviewsPreview-no-remixes">This remix currently does not have any remix reviews.</p>}
+      ) : <p className="RemixReviewsPreview-no-remixes">This remix currently does not have any remix reviews. Be the first to add one!</p>}
+      <Link className="RemixReviewsPreview-add-review btn btn-secondary font-weight-bold mr-3" 
+        to={`/remixes/${remixId}/reviews/new`}
+        state={{remixName}}
+      >
+        Add New Review
+      </Link>
       <hr />
     </div>
   );
