@@ -70,7 +70,7 @@ function EditRecipeReviewForm({editRecipeReviewFunc}) {
   return (
     <div className="EditRecipeReviewForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-        <h2 className="mb-3">Edit Review for the Recipe <Link className="NewRecipeReviewForm-recipe-details-link" to={`/recipes/${recipeId}`}>
+        <h2 className="mb-3">Edit Review for the Recipe <Link className="EditRecipeReviewForm-recipe-details-link" to={`/recipes/${recipeId}`}>
             {recipeName}
           </Link>
         </h2>
