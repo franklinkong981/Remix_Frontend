@@ -209,6 +209,23 @@ function App() {
     }
   };
 
+  /**
+   * Is triggered by the user submitting the form to edit an existing recipe review. Calls the RemixAPI with
+   * the processed form data and the review id, which sends a request to the backend to update the recipe review to the database.
+   * If successful, will simply return an object with the successful attribute set to true.
+   */
+  const editRecipeReview = async (reviewId, editRecipeReviewFormValues) => {
+    try {
+      console.log(editRecipeReviewFormValues);
+
+      await RemixApi.editRecipeReview(reviewId, editRecipeReviewFormValues);
+      return {successful: true};
+    } catch(errors) {
+      console.error(`Failed to update the recipe review with id of ${reviewId}`, errors);
+      return {successful: false, errors};
+    }
+  };
+
   //When the page is first loaded, "Loading" will be displayed while the currently logged in user (if applicable)'s information is being fetched.
   if (!userInfoLoaded) return (
     <div className="App">
@@ -221,7 +238,8 @@ function App() {
       <div className="App">
         <RemixNavbar logOutFunc={logoutUser} />
         <RemixRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} addRecipeFunc={addNewRecipe} editRecipeFunc={editRecipe}
-                     addRemixFunc={addNewRemix} editRemixFunc={editRemix} addRecipeReviewFunc={addNewRecipeReview}/>
+                     addRemixFunc={addNewRemix} editRemixFunc={editRemix} addRecipeReviewFunc={addNewRecipeReview}
+                     editRecipeReviewFunc={editRecipeReview} />
       </div>
     </CurrentUserContext.Provider>
   );

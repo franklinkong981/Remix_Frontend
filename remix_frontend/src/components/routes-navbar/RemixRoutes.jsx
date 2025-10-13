@@ -28,6 +28,7 @@ import NewRemixForm from "../forms/NewRemixForm.jsx";
 import EditRemixForm from "../forms/EditRemixForm.jsx";
 
 import NewRecipeReviewForm from "../forms/NewRecipeReviewForm.jsx";
+import EditRecipeReviewForm from "../forms/EditRecipeReviewForm.jsx";
 
 /**
  * The component for site-wide routes rendered by the App component.
@@ -37,7 +38,7 @@ import NewRecipeReviewForm from "../forms/NewRecipeReviewForm.jsx";
  * 
  * Visitng a non-existent route redirects to the homepage.
  */
-function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc, editRecipeFunc, addRemixFunc, editRemixFunc, addRecipeReviewFunc}) {
+function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc, editRecipeFunc, addRemixFunc, editRemixFunc, addRecipeReviewFunc, editRecipeReviewFunc}) {
   return (
     <div className="Routes pt-5">
       <Routes>
@@ -96,6 +97,9 @@ function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc, editRecipeFunc, addR
 
         <Route path="/recipes/:recipeId/reviews/new" element={<ProtectedRoute>
           <NewRecipeReviewForm addRecipeReviewFunc={addRecipeReviewFunc} />
+        </ProtectedRoute>} />
+        <Route path="/recipes/reviews/:reviewId/edit" element={<ProtectedRoute>
+          <EditRecipeReviewForm editRecipeReviewFunc={editRecipeReviewFunc} />
         </ProtectedRoute>} />
 
         <Route exact path="/" element={<Homepage />} />

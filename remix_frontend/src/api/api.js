@@ -185,6 +185,21 @@ class RemixApi {
   static async addNewRecipeReview(recipeId, newRecipeReviewFormValues) {
     await this.request(`recipes/${recipeId}/reviews`, newRecipeReviewFormValues, "post");
   }
+
+  /** Attempts to fetch the recipe review with id of reviewId from the backend database.
+   *  If successful, returns information about the specific recipe review, including its title and content.
+   */
+  static async getRecipeReview(reviewId) {
+    let res = await this.request(`recipes/reviews/${reviewId}`);
+    return res.recipeReview;
+  }
+
+  /** Attempts to update a recipe review with the id of reviewId to the backend database using the object editRecipeReviewFormValues. 
+   *  If it is successful, simply returns.
+   */
+  static async editRecipeReview(reviewId, editRecipeReviewFormValues) {
+    await this.request(`recipes/reviews/${reviewId}`, editRecipeReviewFormValues, "patch");
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.
