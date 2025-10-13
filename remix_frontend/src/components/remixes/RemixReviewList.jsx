@@ -18,7 +18,9 @@ function RemixReviewList({remixReviews}) {
       {remixReviews.length ? (
         <div className="RemixReviewList-list">
           {remixReviews.map(remixReview => (
-            <RemixReview key={uuidv4()} 
+            <RemixReview key={uuidv4()}
+              reviewId={remixReview.id}
+              reviewAuthor={recipeReview.reviewAuthor || ""} 
               remixId={remixReview.remixId} 
               remixName={remixReview.remixName}
               title={remixReview.title}
