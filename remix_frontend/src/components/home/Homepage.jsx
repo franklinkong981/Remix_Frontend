@@ -45,7 +45,7 @@ function Homepage() {
       ) : (
         <div className="Homepage-logged-out container text-center">
           <h1 className="Homepage-logged-out-title mb-4 font-weight-bold">Welcome to Remix!</h1>
-          <p className="Homepage-logged-out-subtitle lead">Create Your Own Recipes or Create a Remix of an Existing Recipe to Suit Your Needs!</p>
+          <p className="Homepage-logged-out-subtitle lead">Create Your Own Recipes or Modified Versions of Other Recipes!</p>
           <div className="Homepage-logged-out-links">
             <Link className="Homepage-logged-out-login-link btn btn-secondary font-weight-bold mr-3" to="/login">
               Log In
