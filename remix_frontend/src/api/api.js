@@ -233,6 +233,26 @@ class RemixApi {
     const res = await this.request(`users/${username}/favorites/remixes`);
     return res.allUserFavoriteRemixes;
   }
+
+  /** Adds the recipe with recipeId to the logged in user's list of favorite recipes. */
+  static async addRecipeToFavorites(recipeId) {
+    await this.request(`users/favorites/recipes/${recipeId}`, method = "post");
+  }
+
+  /** Removes the recipe with recipeId from the logged in user's list of favorite recipes. */
+  static async removeRecipeFromFavorites(recipeId) {
+    await this.request(`users/favorites/recipes/${recipeId}`, method = "delete");
+  }
+
+  /** Adds the remix with remixId to the logged in user's list of favorite remixes. */
+  static async addRemixToFavorites(remixId) {
+    await this.request(`users/favorites/remixes/${remixId}`, method = "post");
+  }
+
+  /** Removes the remix with remixId from the logged in user's list of favorite remixes. */
+  static async removeRemixFromFavorites(remixId) {
+    await this.request(`users/favorites/remixes/${remixId}`, method = "delete");
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.

@@ -268,6 +268,24 @@ function App() {
     }
   };
 
+  /**
+  * Checks whether a recipe with a specific recipeId is currently in the logged in user's list of favorite recipes.
+  */
+  const isRecipeInFavorites = (recipeId) => {
+    return favoriteRecipeIds.has(recipeId);
+  };
+
+  /**
+   * Has the currently logged in user apply to the job with the specific jobId.
+   * Updates this application information in the backend and updates the list of applied jobIds in the frontend as well.
+   */
+  const applyToJob = async (jobId) => {
+    if (hasUserAppliedToJob(jobId)) return;
+
+    await JoblyApi.applyToJob(currentUserInfo.username, jobId);
+    setAppliedJobIds(new Set([...appliedJobIds, jobId]));
+  };
+
   //When the page is first loaded, "Loading" will be displayed while the currently logged in user (if applicable)'s information is being fetched.
   if (!userInfoLoaded) return (
     <div className="App">
