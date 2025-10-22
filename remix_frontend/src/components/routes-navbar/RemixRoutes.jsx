@@ -11,6 +11,8 @@ import UserRecipeList from "../profile/UserRecipeList.jsx";
 import UserRemixList from "../profile/UserRemixList.jsx";
 import UserRecipeReviewList from "../profile/UserRecipeReviewList.jsx";
 import UserRemixReviewList from "../profile/UserRemixReviewList.jsx";
+import UserFavoriteRecipesList from "../profile/UserFavoriteRecipesList.jsx";
+import UserFavoriteRemixesList from "../profile/UserFavoriteRemixesList.jsx";
 
 import UpdateProfileForm from "../profile/UpdateProfileForm.jsx";
 
@@ -59,6 +61,13 @@ function RemixRoutes({signUpFunc, loginFunc, addRecipeFunc, editRecipeFunc, addR
         <Route path="/users/:username/reviews/remixes" element={<ProtectedRoute> 
           <UserRemixReviewList /> 
         </ProtectedRoute>} />
+        <Route path="/users/:username/favorites/recipes" element={<ProtectedRoute> 
+          <UserFavoriteRecipesList /> 
+        </ProtectedRoute>} />
+        <Route path="/users/:username/favorites/remixes" element={<ProtectedRoute> 
+          <UserFavoriteRemixesList /> 
+        </ProtectedRoute>} />
+
         
         <Route path="/profile" element={<ProtectedRoute> 
           <UpdateProfileForm /> 

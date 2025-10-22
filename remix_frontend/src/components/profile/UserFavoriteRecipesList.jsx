@@ -15,7 +15,7 @@ import RemixApi from "../../api/api.js";
  * 
  * Contains RecipeList component.
  */
-function UserFavoriteRecipeList() {
+function UserFavoriteRecipesList() {
   const params = useParams();
   const [favoriteRecipesList, setFavoriteRecipesList] = useState(null);
 
@@ -36,13 +36,13 @@ function UserFavoriteRecipeList() {
   }
   
   return (
-    <div className="UserFavoriteRecipeList">
-      <h1 className="UserFavoriteRecipeList-header">Your Favorite Recipes</h1>
+    <div className="UserFavoriteRecipesList">
+      <h1 className="UserFavoriteRecipesList-header">Your Favorite Recipes</h1>
       {favoriteRecipesList.length ? (
         <RecipeList recipes={favoriteRecipesList}/>
-      ) : <p className="UserFavoriteRecipeList-no-recipes">You currently do not have any favorite recipes.</p>}
+      ) : <p className="UserFavoriteRecipesList-no-recipes">You currently do not have any favorite recipes.</p>}
     </div>
   );
 }
 
-export default UserFavoriteRecipeList;
+export default UserFavoriteRecipesList;

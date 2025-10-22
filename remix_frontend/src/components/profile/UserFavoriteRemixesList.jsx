@@ -15,7 +15,7 @@ import RemixApi from "../../api/api.js";
  * 
  * Contains RemixList component.
  */
-function UserFavoriteRemixList() {
+function UserFavoriteRemixesList() {
   const params = useParams();
   const [favoriteRemixesList, setFavoriteRemixesList] = useState(null);
 
@@ -32,17 +32,17 @@ function UserFavoriteRemixList() {
 
   //if favoriteRemixesList is empty, will still be truthy, so won't show loading screen.
   if (!favoriteRemixesList) {
-    return <h1 className="UserFavoriteRemixList-loading">Loading...</h1>
+    return <h1 className="UserFavoriteRemixesList-loading">Loading...</h1>
   }
   
   return (
-    <div className="UserFavoriteRemixList">
-      <h1 className="UserFavoriteRemixList-header">Your Favorite Remixes</h1>
+    <div className="UserFavoriteRemixesList">
+      <h1 className="UserFavoriteRemixesList-header">Your Favorite Remixes</h1>
       {favoriteRemixesList.length ? (
         <RemixList remixes={favoriteRemixesList}/>
-      ) : <p className="UserFavoriteRemixList-no-remixes">You currently do not have any favorite remixes.</p>}
+      ) : <p className="UserFavoriteRemixesList-no-remixes">You currently do not have any favorite remixes.</p>}
     </div>
   );
 }
 
-export default UserFavoriteRemixList;
+export default UserFavoriteRemixesList;
