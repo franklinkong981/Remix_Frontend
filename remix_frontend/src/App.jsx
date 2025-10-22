@@ -37,6 +37,11 @@ function App() {
   const [userToken, setUserToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
 
+  //list of recipe ids that make up the currently logged in user's favorite recipes.
+  const [favoriteRecipeIds, setFavoriteRecipeIds] = useState(new Set([]));
+  //list of remix ids that make up the currently logged in user's favorite remixes.
+  const [favoriteRemixIds, setFavoriteRemixIds] = useState(new Set([]));
+
   useEffect(function getUserInfoUponTokenChange() {
     //Load user information from the RemixApi. Only depends on userToken (payload = {userId, username, email})
     //since this only needs to run when user logs in or logs out.
@@ -48,6 +53,8 @@ function App() {
           let currentUserPayload= jwtDecode(userToken);
           let currentUser = await RemixApi.getCurrentLoggedInUser(currentUserPayload.username);
           setCurrentUserInfo(currentUser);
+          setFavoriteRecipeIds(new Set(currentUser.favoriteRecipeIds));
+          setFavoriteRemixIds(new Set(currentUser.favoriteRemixIds));
         } catch(err) {
           console.error("Problem encountered while fetching new current user information: ", err);
           setCurrentUserInfo(null);
