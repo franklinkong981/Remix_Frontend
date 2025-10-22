@@ -221,6 +221,18 @@ class RemixApi {
   static async editRemixReview(reviewId, editRemixReviewFormValues) {
     await this.request(`remixes/reviews/${reviewId}`, editRemixReviewFormValues, "patch");
   }
+  
+  /** Fetches the list of the username's current favorite recipes. */
+  static async getFavoriteRecipes(username) {
+    const res = await this.request(`users/${username}/favorites/recipes`);
+    return res.allUserFavoriteRecipes;
+  }
+
+  /** Fetches the list of the username's current favorite remixes. */
+  static async getFavoriteRemixes(username) {
+    const res = await this.request(`/users/${username}/favorites/remixes`);
+    return res.allUserFavoriteRemixes;
+  }
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.
