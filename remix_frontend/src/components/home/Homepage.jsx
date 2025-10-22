@@ -36,6 +36,15 @@ function Homepage() {
               Add New Recipe
             </Link>
           </div>
+          <p className="Homepage-logged-in-subtitle lead">See your favorite recipes and remixes.</p>
+          <div className="Homepage-logged-in-links">
+            <Link className="Homepage-logged-in-favorite-recipes-link btn btn-secondary font-weight-bold mr-3" to={`/users/${currentUserInfo.username}/favorites/recipes`}>
+              Your Favorite Recipes
+            </Link>
+            <Link className="Homepage-logged-in-favorite-remixes-link btn btn-secondary font-weight-bold mr-3" to={`/users/${currentUserInfo.username}/favorites/remixes`}>
+              Your Favorite Remixes
+            </Link>
+          </div>
           <hr />
           <UserRecipesPreview recipes={currentUserInfo.recipes}/>
           <UserRecipeReviewsPreview recipeReview={currentUserInfo.recipeReview} />
