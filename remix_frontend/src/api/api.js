@@ -236,22 +236,22 @@ class RemixApi {
 
   /** Adds the recipe with recipeId to the logged in user's list of favorite recipes. */
   static async addRecipeToFavorites(recipeId) {
-    await this.request(`users/favorites/recipes/${recipeId}`, method = "post");
+    await this.request(`users/favorites/recipes/${recipeId}`, {}, "post");
   }
 
   /** Removes the recipe with recipeId from the logged in user's list of favorite recipes. */
   static async removeRecipeFromFavorites(recipeId) {
-    await this.request(`users/favorites/recipes/${recipeId}`, method = "delete");
+    await this.request(`users/favorites/recipes/${recipeId}`, {}, "delete");
   }
 
   /** Adds the remix with remixId to the logged in user's list of favorite remixes. */
   static async addRemixToFavorites(remixId) {
-    await this.request(`users/favorites/remixes/${remixId}`, method = "post");
+    await this.request(`users/favorites/remixes/${remixId}`, {}, "post");
   }
 
   /** Removes the remix with remixId from the logged in user's list of favorite remixes. */
   static async removeRemixFromFavorites(remixId) {
-    await this.request(`users/favorites/remixes/${remixId}`, method = "delete");
+    await this.request(`users/favorites/remixes/${remixId}`, {}, "delete");
   }
 }
 

@@ -59,7 +59,7 @@ function RecipeCard({id, name, description, recipeAuthor="", imageUrl, createdAt
             </Link>
         }
         <button 
-          className="RecipeCard-favorite-button btn btn-danger font-weight-bold float-right"
+          className="RecipeCard-favorite-button btn btn-danger font-weight-bold mr-3"
           onClick={handleFavoritesClick}>
             {isFavorite ? "Remove From Favorites" : "Add to Favorites"}
         </button>

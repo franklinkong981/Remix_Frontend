@@ -283,7 +283,7 @@ function App() {
   const addRecipeToFavorites = async (recipeId) => {
     if (isRecipeInFavorites(recipeId)) return;
 
-    await JoblyApi.addRecipeToFavorites(recipeId);
+    await RemixApi.addRecipeToFavorites(recipeId);
 
     setFavoriteRecipeIds(new Set([...favoriteRecipeIds, recipeId]));
   };
@@ -296,7 +296,7 @@ function App() {
   const removeRecipeFromFavorites = async (recipeId) => {
     if (!(isRecipeInFavorites(recipeId))) return;
 
-    await JoblyApi.removeRecipeFromFavorites(recipeId);
+    await RemixApi.removeRecipeFromFavorites(recipeId);
 
     const newFavoriteRecipeIds = new Set(favoriteRecipeIds);
     newFavoriteRecipeIds.delete(recipeId);
@@ -318,7 +318,7 @@ function App() {
   const addRemixToFavorites = async (remixId) => {
     if (isRemixInFavorites(remixId)) return;
 
-    await JoblyApi.addRemixToFavorites(remixId);
+    await RemixApi.addRemixToFavorites(remixId);
 
     setFavoriteRemixIds(new Set([...favoriteRemixIds, remixId]));
   };
@@ -331,7 +331,7 @@ function App() {
   const removeRemixFromFavorites = async (remixId) => {
     if (!(isRemixInFavorites(remixId))) return;
 
-    await JoblyApi.removeRemixFromFavorites(remixId);
+    await RemixApi.removeRemixFromFavorites(remixId);
 
     const newFavoriteRemixIds = new Set(favoriteRemixIds);
     newFavoriteRemixIds.delete(remixId);
