@@ -276,14 +276,31 @@ function App() {
   };
 
   /**
-   * Has the currently logged in user apply to the job with the specific jobId.
-   * Updates this application information in the backend and updates the list of applied jobIds in the frontend as well.
+   * Adds the recipe with id of recipeId to currently logged in user's list of favorite recipes in the backend,
+   * updates the display in the frontend as well to match this addition.
+   * If recipe id is already in the user's list of favorite recipes, do nothing.
    */
-  const applyToJob = async (jobId) => {
-    if (hasUserAppliedToJob(jobId)) return;
+  const addRecipeToFavorites = async (jobId) => {
+    if (isRecipeInFavorites(recipeId)) return;
 
-    await JoblyApi.applyToJob(currentUserInfo.username, jobId);
-    setAppliedJobIds(new Set([...appliedJobIds, jobId]));
+    await JoblyApi.addRecipeToFavorites(recipeId);
+
+    setFavoriteRecipeIds(new Set([...favoriteRecipeIds, recipeId]));
+  };
+
+  /**
+   * Removes the recipe with id of recipeId from currently logged in user's list of favorite recipes in the backend,
+   * updates the display in the frontend as well to match this deletion.
+   * If recipe id is already not in the user's list of favorite recipes, do nothing.
+   */
+  const removeRecipeFromFavorites = async (recipeId) => {
+    if (!(isRecipeInFavorites(recipeId))) return;
+
+    await JoblyApi.removeRecipeFromFavorites(recipeId);
+
+    const newFavoriteRecipeIds = new Set(favoriteRecipeIds);
+    newFavoriteRecipeIds.delete(recipeId);
+    setFavoriteRecipeIds(newFavoriteRecipeIds);
   };
 
   //When the page is first loaded, "Loading" will be displayed while the currently logged in user (if applicable)'s information is being fetched.
