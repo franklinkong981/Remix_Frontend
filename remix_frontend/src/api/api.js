@@ -230,7 +230,7 @@ class RemixApi {
 
   /** Fetches the list of the username's current favorite remixes. */
   static async getFavoriteRemixes(username) {
-    const res = await this.request(`/users/${username}/favorites/remixes`);
+    const res = await this.request(`users/${username}/favorites/remixes`);
     return res.allUserFavoriteRemixes;
   }
 }
