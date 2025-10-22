@@ -210,6 +210,8 @@ function App() {
       console.log(newRecipeReviewFormValues);
 
       await RemixApi.addNewRecipeReview(recipeId, newRecipeReviewFormValues);
+
+      
       return {successful: true};
     } catch(errors) {
       console.error("Failed to add a new recipe review", errors);

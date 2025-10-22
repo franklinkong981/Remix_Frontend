@@ -153,7 +153,13 @@ class RemixApi {
    */
   static async addNewRecipe(newRecipeFormValues) {
     let res = await this.request(`recipes`, newRecipeFormValues, "post");
-    return {newRecipeId: res.newRecipe.id};
+    return {
+      id: res.newRecipe.id,
+      name: res.newRecipe.name,
+      description: res.newRecipe.description,
+      imageUrl: res.newRecipe.imageUrl,
+      createdAt: res.newRecipe.createdAt
+    };
   }
 
   /** Attempts to update a recipe with the id of recipeId to the backend database using the object editReceipFormValues. 
@@ -161,7 +167,13 @@ class RemixApi {
    */
   static async editRecipe(recipeId, editRecipeFormValues) {
     let res = await this.request(`recipes/${recipeId}`, editRecipeFormValues, "patch");
-    return {updatedRecipeId: res.updatedRecipe.id};
+    return {
+      id: res.updatedRecipe.id,
+      name: res.updatedRecipe.name,
+      description: res.updatedRecipe.description,
+      imageUrl: res.updatedRecipe.imageUrl,
+      createdAt: res.updatedRecipe.createdAt
+    };
   }
 
   /** Attempts to update a recipe with the id of recipeId to the backend database using the object editReceipFormValues. 
@@ -169,7 +181,14 @@ class RemixApi {
    */
   static async addNewRemix(newRemixFormValues) {
     let res = await this.request(`remixes`, newRemixFormValues, "post");
-    return {newRemixId: res.newRemix.id};
+    return {
+      id: res.newRemix.id,
+      name: res.newRemix.name,
+      description: res.newRemix.description,
+      originalRecipe: res.newRemix.originalRecipe,
+      imageUrl: res.newRemix.imageUrl,
+      createdAt: res.newRemix.createdAt
+    };
   }
 
    /** Attempts to update a remix with the id of remixId to the backend database using the object editRemixFormValues. 
@@ -177,7 +196,14 @@ class RemixApi {
    */
   static async editRemix(remixId, editRemixFormValues) {
     let res = await this.request(`remixes/${remixId}`, editRemixFormValues, "patch");
-    return {updatedRemixId: res.updatedRemix.id};
+    return {
+      id: res.updatedRemix.id,
+      name: res.updatedRemix.name,
+      description: res.updatedRemix.description,
+      originalRecipe: res.updatedRemix.originalRecipe,
+      imageUrl: res.updatedRemix.imageUrl,
+      createdAt: res.updatedRemix.createdAt
+    };
   }
 
   /** Attempts to add a new recipe review to the backend database. If it is successful, will simply return.
