@@ -23,13 +23,28 @@ function RemixNavbar({logOutFunc}) {
     return (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item mr-4">
+          <NavLink className="nav-link" to="/recipes">
+            Search Recipes
+          </NavLink>
+        </li>
+        <li className="nav-item mr-4">
+          <NavLink className="nav-link" to="/recipes/new">
+            Add New Recipe
+          </NavLink>
+        </li>
+        <li className="nav-item mr-4">
+          <NavLink className="nav-link" to="/">
+            Your Profile
+          </NavLink>
+        </li>
+        <li className="nav-item mr-4">
           <NavLink className="nav-link" to="/profile">
-            Hello, {currentUserInfo.username}
+            Update Profile
           </NavLink>
         </li>
         <li className="nav-item">
           <Link className="nav-link logout-link" to="/" onClick={logOutFunc}>
-            Log out
+            Log out {currentUserInfo.username}
           </Link>
         </li>
       </ul>
