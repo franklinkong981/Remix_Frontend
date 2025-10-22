@@ -123,8 +123,8 @@ function App() {
       newRecipeFormValues.cookingTime = Number(cookingTime);
       newRecipeFormValues.servings = Number(servings);
 
-      let newRecipeIdObject = await RemixApi.addNewRecipe(newRecipeFormValues);
-      return {successful: true, newRecipeId: newRecipeIdObject.newRecipeId};
+      let newRecipeObject = await RemixApi.addNewRecipe(newRecipeFormValues);
+      return {successful: true, newRecipeId: newRecipeObject.id};
     } catch(errors) {
       console.error("Failed to add a new recipe", errors);
       return {successful: false, errors};
@@ -145,8 +145,8 @@ function App() {
       editRecipeFormValues.cookingTime = Number(cookingTime);
       editRecipeFormValues.servings = Number(servings);
 
-      let editRecipeIdObject = await RemixApi.editRecipe(recipeId, editRecipeFormValues);
-      return {successful: true, updatedRecipeId: editRecipeIdObject.updatedRecipeId};
+      let updatedRecipeObject = await RemixApi.editRecipe(recipeId, editRecipeFormValues);
+      return {successful: true, updatedRecipeId: updatedRecipeObject.id};
     } catch(errors) {
       console.error(`Failed to update the recipe with id ${recipeId}`, errors);
       return {successful: false, errors};
@@ -170,8 +170,8 @@ function App() {
       //add in the originalRecipeId to the newRemixFormValues, since that is required in the body.
       newRemixFormValues.originalRecipeId = Number(originalRecipeId);
 
-      let newRemixIdObject = await RemixApi.addNewRemix(newRemixFormValues);
-      return {successful: true, newRemixId: newRemixIdObject.newRemixId};
+      let newRemixObject = await RemixApi.addNewRemix(newRemixFormValues);
+      return {successful: true, newRemixId: newRemixObject.id};
     } catch(errors) {
       console.error("Failed to add a new remix", errors);
       return {successful: false, errors};
@@ -192,8 +192,8 @@ function App() {
       editRemixFormValues.cookingTime = Number(cookingTime);
       editRemixFormValues.servings = Number(servings);
 
-      let editRemixIdObject = await RemixApi.editRemix(remixId, editRemixFormValues);
-      return {successful: true, updatedRemixId: editRemixIdObject.updatedRemixId};
+      let updatedRemixObject = await RemixApi.editRemix(remixId, editRemixFormValues);
+      return {successful: true, updatedRemixId: updatedRemixObject.id};
     } catch(errors) {
       console.error(`Failed to update the recipe with id ${remixId}`, errors);
       return {successful: false, errors};
@@ -211,7 +211,7 @@ function App() {
 
       await RemixApi.addNewRecipeReview(recipeId, newRecipeReviewFormValues);
 
-      
+
       return {successful: true};
     } catch(errors) {
       console.error("Failed to add a new recipe review", errors);
