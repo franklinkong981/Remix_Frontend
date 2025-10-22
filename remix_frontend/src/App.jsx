@@ -280,7 +280,7 @@ function App() {
    * updates the display in the frontend as well to match this addition.
    * If recipe id is already in the user's list of favorite recipes, do nothing.
    */
-  const addRecipeToFavorites = async (jobId) => {
+  const addRecipeToFavorites = async (recipeId) => {
     if (isRecipeInFavorites(recipeId)) return;
 
     await JoblyApi.addRecipeToFavorites(recipeId);
@@ -303,6 +303,41 @@ function App() {
     setFavoriteRecipeIds(newFavoriteRecipeIds);
   };
 
+  /**
+  * Checks whether a remix with a specific remixId is currently in the logged in user's list of favorite remixes.
+  */
+  const isRemixInFavorites = (remixId) => {
+    return favoriteRemixIds.has(remixId);
+  };
+
+  /**
+   * Adds the remix with id of remixId to currently logged in user's list of favorite remixes in the backend,
+   * updates the display in the frontend as well to match this addition.
+   * If remix id is already in the user's list of favorite remixes, do nothing.
+   */
+  const addRemixToFavorites = async (remixId) => {
+    if (isRemixInFavorites(remixId)) return;
+
+    await JoblyApi.addRemixToFavorites(remixId);
+
+    setFavoriteRemixIds(new Set([...favoriteRemixIds, remixId]));
+  };
+
+  /**
+   * Removes the remix with id of remixId from currently logged in user's list of favorite remixes in the backend,
+   * updates the display in the frontend as well to match this deletion.
+   * If remix id is already not in the user's list of favorite remixes, do nothing.
+   */
+  const removeRemixFromFavorites = async (remixId) => {
+    if (!(isRemixInFavorites(remixId))) return;
+
+    await JoblyApi.removeRemixFromFavorites(remixId);
+
+    const newFavoriteRemixIds = new Set(favoriteRemixIds);
+    newFavoriteRemixIds.delete(remixId);
+    setFavoriteRemixIds(newFavoriteRemixIds);
+  };
+
   //When the page is first loaded, "Loading" will be displayed while the currently logged in user (if applicable)'s information is being fetched.
   if (!userInfoLoaded) return (
     <div className="App">
@@ -311,7 +346,8 @@ function App() {
   )
 
   return (
-    <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo, userToken, setUserToken}}>
+    <CurrentUserContext.Provider value={{ currentUserInfo, setCurrentUserInfo, userToken, setUserToken, 
+    isRecipeInFavorites, addRecipeToFavorites, removeRecipeFromFavorites, isRemixInFavorites, addRemixToFavorites, removeRemixFromFavorites }}>
       <div className="App">
         <RemixNavbar logOutFunc={logoutUser} />
         <RemixRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} addRecipeFunc={addNewRecipe} editRecipeFunc={editRecipe}
