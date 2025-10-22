@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/currentUserContext.jsx";
@@ -14,9 +14,32 @@ import "./RemixCard.css";
  * Depending on the page it's on, may contain either the author of the remix or the original recipe it's a remix of.
  * If it's on the recipes details page, it will contain the remixAuthor but not the originalRecipe. If it's on the user profile page,
  * it will contain the originalRecipe but not the remixAuthor.
+ * 
+ * In addition, there will be a button at the bottom to either add the remix to the user's list of favorite remixes
+ * or remove it from the user's list of favorite remixes.
  */
 function RemixCard({id, name, description, remixAuthor="", originalRecipe = "", imageUrl, createdAt}) {
-  const {currentUserInfo} = useContext(CurrentUserContext);
+  const {currentUserInfo, isRemixInFavorites, addRemixToFavorites, removeRemixFromFavorites} = useContext(CurrentUserContext);
+
+  const [isFavorite, setIsFavorite] = useState();
+  
+  //When user adds/removes the remix from their favorites list, isRemixInFavorites function return value 
+  // is updated in the context, which udpates the text on the Favorites button.
+  useEffect(function updateIsFavoriteStatus() {
+    setIsFavorite(isRemixInFavorites(id))
+  }, [id, isRemixInFavorites]);
+
+  async function handleFavoritesClick(evt) {
+    if (isFavorite) {
+      if (!(isRemixInFavorites(id))) return;
+      await removeRemixFromFavorites(id);
+      setIsFavorite(false);
+    } else {
+      if (isRemixInFavorites(id)) return;
+      await addRemixToFavorites(id);
+      setIsFavorite(true);
+    }
+  }
 
   return (
     <section className="RemixCard card">
@@ -39,6 +62,11 @@ function RemixCard({id, name, description, remixAuthor="", originalRecipe = "", 
             Update Remix
           </Link>
         }
+        <button 
+          className="RemixCard-favorite-button btn btn-danger font-weight-bold mr-3"
+          onClick={handleFavoritesClick}>
+            {isFavorite ? "Remove From Favorites" : "Add to Favorites"}
+        </button>
       </div>
     </section>
   );
