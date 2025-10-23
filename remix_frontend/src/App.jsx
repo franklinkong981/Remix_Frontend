@@ -124,6 +124,21 @@ function App() {
       newRecipeFormValues.servings = Number(servings);
 
       let newRecipeObject = await RemixApi.addNewRecipe(newRecipeFormValues);
+
+      if (currentUserInfo.recipes.length < 3) {
+        setCurrentUserInfo(currentUserInfo => ({
+          ...currentUserInfo,
+          recipes: [newRecipeObject, ...currentUserInfo.recipes]
+        }));
+      } else {
+        let currentRecipes = currentUserInfo.recipes;
+        currentRecipes.pop();
+        setCurrentUserInfo(currentUserInfo => ({
+          ...currentUserInfo,
+          recipes: [newRecipeObject, ...currentRecipes]
+        }));
+      }
+
       return {successful: true, newRecipeId: newRecipeObject.id};
     } catch(errors) {
       console.error("Failed to add a new recipe", errors);
@@ -146,6 +161,7 @@ function App() {
       editRecipeFormValues.servings = Number(servings);
 
       let updatedRecipeObject = await RemixApi.editRecipe(recipeId, editRecipeFormValues);
+
       return {successful: true, updatedRecipeId: updatedRecipeObject.id};
     } catch(errors) {
       console.error(`Failed to update the recipe with id ${recipeId}`, errors);

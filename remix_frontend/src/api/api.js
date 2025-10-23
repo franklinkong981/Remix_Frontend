@@ -149,7 +149,7 @@ class RemixApi {
     return res.remixReviews;
   }
 
-  /** Attempts to add a new recipe to the backend database. If it is successful, returns the id of the new recipe that was added.
+  /** Attempts to add a new recipe to the backend database. If it is successful, returns basic info about the new recipe that was added.
    */
   static async addNewRecipe(newRecipeFormValues) {
     let res = await this.request(`recipes`, newRecipeFormValues, "post");
@@ -163,7 +163,7 @@ class RemixApi {
   }
 
   /** Attempts to update a recipe with the id of recipeId to the backend database using the object editReceipFormValues. 
-   *  If it is successful, returns the id of the updated recipe.
+   *  If it is successful, returns basic info of the updated recipe.
    */
   static async editRecipe(recipeId, editRecipeFormValues) {
     let res = await this.request(`recipes/${recipeId}`, editRecipeFormValues, "patch");
@@ -177,7 +177,7 @@ class RemixApi {
   }
 
   /** Attempts to update a recipe with the id of recipeId to the backend database using the object editReceipFormValues. 
-   *  If it is successful, returns the id of the updated recipe.
+   *  If it is successful, returns basic info about the new remix.
    */
   static async addNewRemix(newRemixFormValues) {
     let res = await this.request(`remixes`, newRemixFormValues, "post");
@@ -192,7 +192,7 @@ class RemixApi {
   }
 
    /** Attempts to update a remix with the id of remixId to the backend database using the object editRemixFormValues. 
-   *  If it is successful, returns the id of the updated remix.
+   *  If it is successful, returns basic info about the updated remix.
    */
   static async editRemix(remixId, editRemixFormValues) {
     let res = await this.request(`remixes/${remixId}`, editRemixFormValues, "patch");
