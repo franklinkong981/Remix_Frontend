@@ -125,6 +125,7 @@ function App() {
 
       let newRecipeObject = await RemixApi.addNewRecipe(newRecipeFormValues);
 
+      //add the new recipe object to the beginning of the currentUserInfo state's recipes array.
       if (currentUserInfo.recipes.length < 3) {
         setCurrentUserInfo(currentUserInfo => ({
           ...currentUserInfo,
@@ -162,6 +163,18 @@ function App() {
 
       let updatedRecipeObject = await RemixApi.editRecipe(recipeId, editRecipeFormValues);
 
+      for (let recipeIndex in currentUserInfo.recipes) {
+        if (currentUserInfo.recipes[recipeIndex].id == updatedRecipeObject.id) {
+          let updatedRecipes = currentUserInfo.recipes;
+          updatedRecipes[recipeIndex] = updatedRecipeObject;
+          setCurrentUserInfo(currentUserInfo => ({
+            ...currentUserInfo,
+            recipes: updatedRecipes
+          }));
+          break;
+        }
+      }
+
       return {successful: true, updatedRecipeId: updatedRecipeObject.id};
     } catch(errors) {
       console.error(`Failed to update the recipe with id ${recipeId}`, errors);
@@ -187,6 +200,22 @@ function App() {
       newRemixFormValues.originalRecipeId = Number(originalRecipeId);
 
       let newRemixObject = await RemixApi.addNewRemix(newRemixFormValues);
+
+      //add the new remix object to the beginning of the currentUserInfo state's remixes array.
+      if (currentUserInfo.remixes.length < 3) {
+        setCurrentUserInfo(currentUserInfo => ({
+          ...currentUserInfo,
+          remixes: [newRemixObject, ...currentUserInfo.remixes]
+        }));
+      } else {
+        let currentRemixes = currentUserInfo.remixes;
+        currentRemixes.pop();
+        setCurrentUserInfo(currentUserInfo => ({
+          ...currentUserInfo,
+          remixes: [newRemixObject, ...currentRemixes]
+        }));
+      }
+
       return {successful: true, newRemixId: newRemixObject.id};
     } catch(errors) {
       console.error("Failed to add a new remix", errors);
@@ -209,6 +238,19 @@ function App() {
       editRemixFormValues.servings = Number(servings);
 
       let updatedRemixObject = await RemixApi.editRemix(remixId, editRemixFormValues);
+
+      for (let remixIndex in currentUserInfo.remixes) {
+        if (currentUserInfo.remixes[remixIndex].id == updatedRemixObject.id) {
+          let updatedRemixes = currentUserInfo.remixes;
+          updatedRemixes[remixIndex] = updatedRemixObject;
+          setCurrentUserInfo(currentUserInfo => ({
+            ...currentUserInfo,
+            remixes: updatedRemixes
+          }));
+          break;
+        }
+      }
+
       return {successful: true, updatedRemixId: updatedRemixObject.id};
     } catch(errors) {
       console.error(`Failed to update the recipe with id ${remixId}`, errors);
