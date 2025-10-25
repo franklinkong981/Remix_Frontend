@@ -267,8 +267,11 @@ function App() {
     try {
       console.log(newRecipeReviewFormValues);
 
-      await RemixApi.addNewRecipeReview(recipeId, newRecipeReviewFormValues);
-
+      let newRecipeReviewObject = await RemixApi.addNewRecipeReview(recipeId, newRecipeReviewFormValues);
+      setCurrentUserInfo(currentUserInfo => ({
+        ...currentUserInfo,
+        recipeReview: newRecipeReviewObject
+      }));
 
       return {successful: true};
     } catch(errors) {
@@ -286,7 +289,12 @@ function App() {
     try {
       console.log(editRecipeReviewFormValues);
 
-      await RemixApi.editRecipeReview(reviewId, editRecipeReviewFormValues);
+      let updatedRecipeReviewObject = await RemixApi.editRecipeReview(reviewId, editRecipeReviewFormValues);
+      setCurrentUserInfo(currentUserInfo => ({
+        ...currentUserInfo,
+        recipeReview: updatedRecipeReviewObject
+      }));
+
       return {successful: true};
     } catch(errors) {
       console.error(`Failed to update the recipe review with id of ${reviewId}`, errors);
@@ -303,7 +311,12 @@ function App() {
     try {
       console.log(newRemixReviewFormValues);
 
-      await RemixApi.addNewRemixReview(remixId, newRemixReviewFormValues);
+      let newRemixReviewObject = await RemixApi.addNewRemixReview(remixId, newRemixReviewFormValues);
+      setCurrentUserInfo(currentUserInfo => ({
+        ...currentUserInfo,
+        remixReview: newRemixReviewObject
+      }));
+
       return {successful: true};
     } catch(errors) {
       console.error("Failed to add a new remix review", errors);
@@ -320,7 +333,12 @@ function App() {
     try {
       console.log(editRemixReviewFormValues);
 
-      await RemixApi.editRemixReview(reviewId, editRemixReviewFormValues);
+      let updatedRemixReviewObject = await RemixApi.editRemixReview(reviewId, editRemixReviewFormValues);
+      setCurrentUserInfo(currentUserInfo => ({
+        ...currentUserInfo,
+        remixReview: updatedRemixReviewObject
+      }));
+
       return {successful: true};
     } catch(errors) {
       console.error(`Failed to update the recipe review with id of ${reviewId}`, errors);
