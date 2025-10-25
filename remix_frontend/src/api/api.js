@@ -153,13 +153,7 @@ class RemixApi {
    */
   static async addNewRecipe(newRecipeFormValues) {
     let res = await this.request(`recipes`, newRecipeFormValues, "post");
-    return {
-      id: res.newRecipe.id,
-      name: res.newRecipe.name,
-      description: res.newRecipe.description,
-      imageUrl: res.newRecipe.imageUrl,
-      createdAt: res.newRecipe.createdAt
-    };
+    return res.newRecipe;
   }
 
   /** Attempts to update a recipe with the id of recipeId to the backend database using the object editReceipFormValues. 
@@ -167,13 +161,7 @@ class RemixApi {
    */
   static async editRecipe(recipeId, editRecipeFormValues) {
     let res = await this.request(`recipes/${recipeId}`, editRecipeFormValues, "patch");
-    return {
-      id: res.updatedRecipe.id,
-      name: res.updatedRecipe.name,
-      description: res.updatedRecipe.description,
-      imageUrl: res.updatedRecipe.imageUrl,
-      createdAt: res.updatedRecipe.createdAt
-    };
+    return res.updatedRecipe;
   }
 
   /** Attempts to update a recipe with the id of recipeId to the backend database using the object editReceipFormValues. 
@@ -181,14 +169,7 @@ class RemixApi {
    */
   static async addNewRemix(newRemixFormValues) {
     let res = await this.request(`remixes`, newRemixFormValues, "post");
-    return {
-      id: res.newRemix.id,
-      name: res.newRemix.name,
-      description: res.newRemix.description,
-      originalRecipe: res.newRemix.originalRecipe,
-      imageUrl: res.newRemix.imageUrl,
-      createdAt: res.newRemix.createdAt
-    };
+    return res.newRemix;
   }
 
    /** Attempts to update a remix with the id of remixId to the backend database using the object editRemixFormValues. 
@@ -196,20 +177,14 @@ class RemixApi {
    */
   static async editRemix(remixId, editRemixFormValues) {
     let res = await this.request(`remixes/${remixId}`, editRemixFormValues, "patch");
-    return {
-      id: res.updatedRemix.id,
-      name: res.updatedRemix.name,
-      description: res.updatedRemix.description,
-      originalRecipe: res.updatedRemix.originalRecipe,
-      imageUrl: res.updatedRemix.imageUrl,
-      createdAt: res.updatedRemix.createdAt
-    };
+    return res.updatedRemix;
   }
 
   /** Attempts to add a new recipe review to the backend database. If it is successful, will simply return.
    */
   static async addNewRecipeReview(recipeId, newRecipeReviewFormValues) {
-    await this.request(`recipes/${recipeId}/reviews`, newRecipeReviewFormValues, "post");
+    let res = await this.request(`recipes/${recipeId}/reviews`, newRecipeReviewFormValues, "post");
+    return res.newRecipeReview;
   }
 
   /** Attempts to fetch the recipe review with id of reviewId from the backend database.
@@ -224,15 +199,16 @@ class RemixApi {
    *  If it is successful, simply returns.
    */
   static async editRecipeReview(reviewId, editRecipeReviewFormValues) {
-    await this.request(`recipes/reviews/${reviewId}`, editRecipeReviewFormValues, "patch");
+    let res = await this.request(`recipes/reviews/${reviewId}`, editRecipeReviewFormValues, "patch");
+    return res.updatedRecipeReview;
   }
 
   /** Attempts to add a new remix review to the backend database. If it is successful, will simply return.
    */
   static async addNewRemixReview(remixId, newRemixReviewFormValues) {
-    await this.request(`remixes/${remixId}/reviews`, newRemixReviewFormValues, "post");
+    let res = await this.request(`remixes/${remixId}/reviews`, newRemixReviewFormValues, "post");
+    return res.newRemixReview;
   }
-
   /** Attempts to fetch the remix review with id of reviewId from the backend database.
    *  If successful, returns information about the specific remix review, including its title and content.
    */
@@ -245,7 +221,8 @@ class RemixApi {
    *  If it is successful, simply returns.
    */
   static async editRemixReview(reviewId, editRemixReviewFormValues) {
-    await this.request(`remixes/reviews/${reviewId}`, editRemixReviewFormValues, "patch");
+    let res = await this.request(`remixes/reviews/${reviewId}`, editRemixReviewFormValues, "patch");
+    return res.updatedRemixReview;
   }
   
   /** Fetches the list of the username's current favorite recipes. */
