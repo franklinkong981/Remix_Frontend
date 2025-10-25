@@ -290,10 +290,12 @@ function App() {
       console.log(editRecipeReviewFormValues);
 
       let updatedRecipeReviewObject = await RemixApi.editRecipeReview(reviewId, editRecipeReviewFormValues);
-      setCurrentUserInfo(currentUserInfo => ({
-        ...currentUserInfo,
-        recipeReview: updatedRecipeReviewObject
-      }));
+      if (updatedRecipeReviewObject.id == currentUserInfo.recipeReview.id) {
+        setCurrentUserInfo(currentUserInfo => ({
+          ...currentUserInfo,
+          recipeReview: updatedRecipeReviewObject
+        }));
+      }
 
       return {successful: true};
     } catch(errors) {
@@ -334,10 +336,12 @@ function App() {
       console.log(editRemixReviewFormValues);
 
       let updatedRemixReviewObject = await RemixApi.editRemixReview(reviewId, editRemixReviewFormValues);
-      setCurrentUserInfo(currentUserInfo => ({
-        ...currentUserInfo,
-        remixReview: updatedRemixReviewObject
-      }));
+      if (updatedRemixReviewObject.id == currentUserInfo.remixReview.id) {
+        setCurrentUserInfo(currentUserInfo => ({
+          ...currentUserInfo,
+          remixReview: updatedRemixReviewObject
+        }));
+      }
 
       return {successful: true};
     } catch(errors) {
