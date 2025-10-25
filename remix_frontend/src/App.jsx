@@ -52,7 +52,7 @@ function App() {
           RemixApi.token = userToken;
           let currentUserPayload= jwtDecode(userToken);
           let currentUser = await RemixApi.getCurrentLoggedInUser(currentUserPayload.username);
-          setCurrentUserInfo(currentUser);
+          setCurrentUserInfo(currentUserInfo => currentUser);
           setFavoriteRecipeIds(new Set(currentUser.favoriteRecipeIds));
           setFavoriteRemixIds(new Set(currentUser.favoriteRemixIds));
         } catch(err) {
@@ -65,7 +65,6 @@ function App() {
 
     setUserInfoLoaded(false);
     getCurrentUserInfo();
-
   }, [userToken]);
 
   /**

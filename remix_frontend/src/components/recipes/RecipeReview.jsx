@@ -12,6 +12,7 @@ import "./RecipeReview.css";
  */
 function RecipeReview({reviewId, reviewAuthor="", recipeId, recipeName, title, content, createdAt}) {
   const {currentUserInfo} = useContext(CurrentUserContext);
+  console.log(currentUserInfo);
 
   return (
     <section className="RecipeReview card">

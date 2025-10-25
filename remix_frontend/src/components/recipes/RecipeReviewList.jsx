@@ -23,7 +23,7 @@ function RecipeReviewList({recipeReviews}) {
         <div className="RecipeReviewList-list">
           {recipeReviews.map(recipeReview => (
             <RecipeReview key={uuidv4()} 
-              reviewId={recipeReview.id}
+              reviewId={recipeReview.reviewId}
               reviewAuthor={recipeReview.reviewAuthor || ""}
               recipeId={recipeReview.recipeId} 
               recipeName={recipeReview.recipeName}
