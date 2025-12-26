@@ -38,7 +38,7 @@ function RecipeDetail() {
 
   return (
     <div className="RecipeDetail col-md-8 offset-md-2">
-      <img className="RecipeDetail-image" src={recipeDetailedInfo.imageUrl} alt={`Picture of ${recipeDetailedInfo.name}`}></img>
+      <img className="RecipeDetail-image img-fluid" src={recipeDetailedInfo.imageUrl} alt={`Picture of ${recipeDetailedInfo.name}`}></img>
       <h1 className="RecipeDetail-name">{recipeDetailedInfo.name}</h1>
       <h2 className="RecipeDetail-description">{recipeDetailedInfo.description}</h2>
       <p className="RecipeDetail-author">Created by {recipeDetailedInfo.recipeAuthor} on {recipeDetailedInfo.createdAt}.</p>
